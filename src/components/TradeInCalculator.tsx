@@ -18,13 +18,13 @@ export function TradeInCalculator() {
   if (deviceCondition === 'type3') oldValuation = oldDevice.estimatedValueType3;
 
   // Bonus from store
-  const storeSubsidyVnd = newProduct.tradeInBonus * 1000000;
+  const storeSubsidyVnd = newProduct.tradeInBonus;
 
   // Total trade-in deduction value
   const totalDeductionVnd = oldValuation + storeSubsidyVnd;
 
   // New phone base price
-  const newPhonePriceVnd = newProduct.storages[0].price * 1000000;
+  const newPhonePriceVnd = newProduct.storages[0].price;
 
   // Amount remaining to pay
   const remainingPaymentVnd = Math.max(0, newPhonePriceVnd - totalDeductionVnd);
@@ -123,7 +123,7 @@ export function TradeInCalculator() {
               >
                 {PHONE_PRODUCTS.map((p) => (
                   <option key={p.id} value={p.id} className="bg-slate-900 text-white">
-                    {p.name} ({p.storages[0].price} Triệu VNĐ)
+                    {p.name} ({(p.storages[0].price / 1000000).toFixed(1)} Triệu VNĐ)
                   </option>
                 ))}
               </select>
