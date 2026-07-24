@@ -6,8 +6,8 @@ export interface PhoneColor {
 
 export interface StorageOption {
   capacity: '128GB' | '256GB' | '512GB' | '1TB';
-  price: number; // VNĐ (Giá bán TGDD)
-  oldPrice?: number; // VNĐ (Giá niêm yết)
+  price: number; // VNĐ
+  oldPrice?: number; // VNĐ
 }
 
 export interface PhoneProduct {
@@ -21,9 +21,9 @@ export interface PhoneProduct {
   ram: string;
   camera: string;
   battery: string;
-  tradeInBonus: number; // VNĐ (Trợ giá thu cũ TGDD)
-  discountTag?: string; // Nhãn giảm giá TGDD (VD: "Giảm 2.000.000đ", "HSSV Giảm 500k")
-  giftDesc?: string; // Quà tặng kèm TGDD
+  tradeInBonus: number; // VNĐ
+  discountTag?: string;
+  giftDesc?: string;
   description: string;
   imageUrl: string;
   officialUrl: string;
@@ -38,9 +38,9 @@ export interface TradeInDevice {
   id: string;
   name: string;
   brand: string;
-  estimatedValueType1: number; // VNĐ (Loại 1 máy đẹp 99%)
-  estimatedValueType2: number; // VNĐ (Loại 2 trầy nhẹ)
-  estimatedValueType3: number; // VNĐ (Loại 3 trầy nhiều)
+  estimatedValueType1: number;
+  estimatedValueType2: number;
+  estimatedValueType3: number;
 }
 
 export interface StoreBranch {
@@ -48,28 +48,24 @@ export interface StoreBranch {
   city: string;
   name: string;
   address: string;
-  phone: string;
   stockStatus: 'Còn hàng sẵn' | 'Giao nhanh 1 giờ';
 }
 
 export const STORE_BRANCHES: StoreBranch[] = [
-  { id: 'tgdd-hn-1', city: 'Hà Nội', name: 'Thế Giới Di Động Thái Hà', address: '11A Thái Hà, P. Trung Liệt, Q. Đống Đa, Hà Nội', phone: '1800 1060', stockStatus: 'Còn hàng sẵn' },
-  { id: 'tgdd-hn-2', city: 'Hà Nội', name: 'Thế Giới Di Động Cầu Giấy', address: '26B Cầu Giấy, P. Quan Hoa, Q. Cầu Giấy, Hà Nội', phone: '1800 1060', stockStatus: 'Còn hàng sẵn' },
-  { id: 'tgdd-hcm-1', city: 'TP. Hồ Chí Minh', name: 'Thế Giới Di Động 3 Tháng 2', address: '136 3 Tháng 2, Phường 12, Quận 10, TP.HCM', phone: '1800 1060', stockStatus: 'Còn hàng sẵn' },
-  { id: 'tgdd-hcm-2', city: 'TP. Hồ Chí Minh', name: 'Thế Giới Di Động Nguyễn Trãi', address: '155 Nguyễn Trãi, Phường 2, Quận 5, TP.HCM', phone: '1800 1060', stockStatus: 'Còn hàng sẵn' },
-  { id: 'tgdd-dn-1', city: 'Đà Nẵng', name: 'Thế Giới Di Động Nguyễn Văn Linh', address: '145 Nguyễn Văn Linh, Q. Hải Châu, Đà Nẵng', phone: '1800 1060', stockStatus: 'Còn hàng sẵn' }
+  { id: 'sb-1', city: 'Hà Nội', name: 'Showroom Trung Tâm Flagship - Hà Nội', address: 'Khu Công Nghệ Cao - Hà Nội', stockStatus: 'Còn hàng sẵn' },
+  { id: 'sb-2', city: 'TP. Hồ Chí Minh', name: 'Showroom Trung Tâm Flagship - TP.HCM', address: 'Quận 1 - TP. Hồ Chí Minh', stockStatus: 'Còn hàng sẵn' },
+  { id: 'sb-3', city: 'Đà Nẵng', name: 'Showroom Công Nghệ - Đà Nẵng', address: 'Quận Hải Châu - Đà Nẵng', stockStatus: 'Còn hàng sẵn' }
 ];
 
 export const TRADE_IN_DEVICES: TradeInDevice[] = [
-  { id: 'ti-15pm', name: 'iPhone 15 Pro Max 256GB (VN/A)', brand: 'Apple', estimatedValueType1: 23500000, estimatedValueType2: 22000000, estimatedValueType3: 20000000 },
-  { id: 'ti-14pm', name: 'iPhone 14 Pro Max 128GB (VN/A)', brand: 'Apple', estimatedValueType1: 18500000, estimatedValueType2: 17000000, estimatedValueType3: 15000000 },
-  { id: 'ti-13pm', name: 'iPhone 13 Pro Max 128GB (VN/A)', brand: 'Apple', estimatedValueType1: 14500000, estimatedValueType2: 13000000, estimatedValueType3: 11500000 },
+  { id: 'ti-15pm', name: 'iPhone 15 Pro Max 256GB', brand: 'Apple', estimatedValueType1: 23500000, estimatedValueType2: 22000000, estimatedValueType3: 20000000 },
+  { id: 'ti-14pm', name: 'iPhone 14 Pro Max 128GB', brand: 'Apple', estimatedValueType1: 18500000, estimatedValueType2: 17000000, estimatedValueType3: 15000000 },
+  { id: 'ti-13pm', name: 'iPhone 13 Pro Max 128GB', brand: 'Apple', estimatedValueType1: 14500000, estimatedValueType2: 13000000, estimatedValueType3: 11500000 },
   { id: 'ti-s24u', name: 'Samsung Galaxy S24 Ultra 256GB', brand: 'Samsung', estimatedValueType1: 20500000, estimatedValueType2: 19000000, estimatedValueType3: 17000000 },
   { id: 'ti-s23u', name: 'Samsung Galaxy S23 Ultra 256GB', brand: 'Samsung', estimatedValueType1: 13500000, estimatedValueType2: 12000000, estimatedValueType3: 10500000 }
 ];
 
 export const PHONE_PRODUCTS: PhoneProduct[] = [
-  // --- APPLE IPHONE SERIES (CHUẨN THẾ GIỚI DI ĐỘNG) ---
   {
     id: 'iphone-16-pro-max',
     name: 'iPhone 16 Pro Max 256GB',
@@ -81,12 +77,12 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     ram: '8 GB',
     camera: 'Chính 48MP & Góc rộng 48MP & Tele 5x 12MP',
     battery: '4.685 mAh, Sạc nhanh MagSafe 25W',
-    tradeInBonus: 5000000, // Trợ giá 5 triệu TGDD
+    tradeInBonus: 5000000,
     discountTag: 'Giảm 2.000.000đ',
-    giftDesc: 'Tặng củ sạc nhanh Apple 25W chính hãng + Trả góp 0%',
-    description: 'Bản nâng cấp mạnh mẽ nhất từ Apple với khung Titan Titan Sa Mạc thời thượng. Viền màn hình mỏng nhất từ trước tới nay, hỗ trợ Apple Intelligence AI việt hóa.',
+    giftDesc: 'Tặng củ sạc nhanh Apple 25W + Trả góp 0%',
+    description: 'Khung Titan Sa Mạc thời thượng. Viền màn hình mỏng nhất lịch sử iPhone, hỗ trợ Apple Intelligence AI việt hóa.',
     imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/dtdd/iphone-16-pro-max',
+    officialUrl: 'https://apple.com',
     colors: [
       { name: 'Titan Sa Mạc (Desert Titanium)', hex: '#C7B299', imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Titan Tự Nhiên (Natural Titanium)', hex: '#8E8D8A', imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=80' },
@@ -115,10 +111,10 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     battery: '3.582 mAh, Sạc MagSafe 25W',
     tradeInBonus: 4000000,
     discountTag: 'Giảm 1.000.000đ',
-    giftDesc: 'Tặng phiếu mua hàng 500.000đ + Giảm 30% Tai nghe AirPods',
-    description: 'Sở hữu trọn vẹn ống kính Tele Zoom 5x cao cấp của dòng Pro Max. Phím bấm Action Button đa năng cùng viền màn hình 6.3 inch tinh tế.',
+    giftDesc: 'Tặng phiếu mua hàng 500.000đ + Giảm 30% Tai nghe',
+    description: 'Trang bị trọn vẹn ống kính Tele Zoom 5x cao cấp. Phím bấm Action Button đa năng cùng màn hình 6.3 inch tinh tế.',
     imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/dtdd/iphone-16-pro',
+    officialUrl: 'https://apple.com',
     colors: [
       { name: 'Titan Sa Mạc', hex: '#C7B299', imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Titan Tự Nhiên', hex: '#8E8D8A', imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=80' },
@@ -145,10 +141,10 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     battery: '3.561 mAh, Sạc nhanh 25W',
     tradeInBonus: 3000000,
     discountTag: 'Giảm 1.000.000đ',
-    giftDesc: 'Giảm thêm 500k cho HSSV + Trả góp 0%',
-    description: 'Màu sắc trẻ trung nổi bật: Xanh Lưu Ly, Hồng Ngọc và Xanh Đại Dương. Hỗ trợ quay video Spatial Video dành cho kính Apple Vision Pro.',
+    giftDesc: 'Ưu đãi sinh viên giảm 500k + Trả góp 0%',
+    description: 'Màu sắc trẻ trung nổi bật: Xanh Lưu Ly, Hồng Ngọc và Xanh Đại Dương. Hỗ trợ quay video Spatial Video.',
     imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/dtdd/iphone-16',
+    officialUrl: 'https://apple.com',
     colors: [
       { name: 'Xanh Lưu Ly (Teal)', hex: '#008080', imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Hồng Ngọc (Pink)', hex: '#E0A96D', imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80' },
@@ -165,7 +161,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     id: 'iphone-13',
     name: 'iPhone 13 128GB',
     brand: 'Apple',
-    tagline: 'Mẫu iPhone quốc dân bán chạy số 1 Thế Giới Di Động',
+    tagline: 'Mẫu iPhone quốc dân bán chạy số 1 phân khúc',
     category: 'iPhone',
     screen: 'OLED 6.1" Super Retina XDR',
     chipset: 'Apple A15 Bionic 6 nhân',
@@ -174,10 +170,10 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     battery: '3.240 mAh, Sạc nhanh 20W',
     tradeInBonus: 2000000,
     discountTag: 'Giảm 3.300.000đ',
-    giftDesc: 'Giá cực tốt tại TGDD + Trả góp 0% lãi suất',
-    description: 'Chiếc iPhone giữ vững ngôi vương doanh số tại TGDD nhờ mức giá hấp dẫn, hiệu năng mượt mà ổn định và camera chụp ảnh chân thực.',
+    giftDesc: 'Giá tốt nhất phân khúc + Trả góp 0% lãi suất',
+    description: 'Giữ vững ngôi vương doanh số nhờ mức giá hấp dẫn, hiệu năng mượt mà ổn định và camera chụp ảnh chân thực.',
     imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/dtdd/iphone-13',
+    officialUrl: 'https://apple.com',
     colors: [
       { name: 'Đen Midnight', hex: '#1C1C1E', imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Trắng Starlight', hex: '#F5F5F7', imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80' },
@@ -187,10 +183,8 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
       { capacity: '128GB', price: 13690000, oldPrice: 16990000 },
       { capacity: '256GB', price: 16990000, oldPrice: 19990000 }
     ],
-    features: ['Chipset Apple A15 Bionic Mượt Ma', 'Camera Chống Rung Sensor-Shift', 'Màn Hình Super Retina XDR Sắc Nét', 'Thời Lượng Pin Bền Bỉ']
+    features: ['Chipset Apple A15 Bionic Mượt Mà', 'Camera Chống Rung Sensor-Shift', 'Màn Hình Super Retina XDR Sắc Nét', 'Thời Lượng Pin Bền Bỉ']
   },
-
-  // --- SAMSUNG GALAXY SERIES (CHUẨN THẾ GIỚI DI ĐỘNG) ---
   {
     id: 'galaxy-s25-ultra',
     name: 'Samsung Galaxy S25 Ultra 5G 256GB',
@@ -204,10 +198,10 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     battery: '5.000 mAh, Sạc siêu nhanh 45W',
     tradeInBonus: 5000000,
     discountTag: 'Giảm 2.000.000đ',
-    giftDesc: 'Tặng Voucher 2 triệu + Bảo hành Samsung Care+ 1 năm',
-    description: 'Kiệt tác Flagship gọt giũa khung Titan góc bo nhẹ nhàng sang trọng. Tích hợp trọn bộ Galaxy AI tiếng Việt khoanh vùng tìm kiếm Circle to Search.',
+    giftDesc: 'Tặng Voucher 2 triệu + Gói bảo hành VIP Care 1 năm',
+    description: 'Kiệt tác Flagship gọt giũa khung Titan góc bo nhẹ nhàng sang trọng. Tích hợp trọn bộ Galaxy AI tiếng Việt khoanh vùng tìm kiếm.',
     imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/dtdd/samsung-galaxy-s25-ultra',
+    officialUrl: 'https://samsung.com',
     colors: [
       { name: 'Xám Titan (Titanium Gray)', hex: '#4A4B4D', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Đen Titan (Titanium Black)', hex: '#1F2022', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' },
@@ -235,10 +229,10 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     battery: '4.400 mAh, Sạc nhanh 25W',
     tradeInBonus: 6000000,
     discountTag: 'Giảm 2.000.000đ',
-    giftDesc: 'Tặng ốp lưng S Pen chính hãng + Gói bảo hành Samsung Care+ 12 tháng',
+    giftDesc: 'Tặng ốp lưng S Pen chính hãng + Gói bảo hành VIP Care 12 tháng',
     description: 'Thiết kế gập vuông vức sang trọng, viền nhôm Armor Aluminum nâng cấp độ bền. Hỗ trợ tính năng phác thảo thành tranh AI Sketch to Image.',
     imageUrl: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/dtdd/samsung-galaxy-z-fold6',
+    officialUrl: 'https://samsung.com',
     colors: [
       { name: 'Xám Metal (Silver Shadow)', hex: '#A8A9AD', imageUrl: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Xanh Navy (Navy Blue)', hex: '#1E293B', imageUrl: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=1200&q=80' }
@@ -254,7 +248,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     id: 'galaxy-a55',
     name: 'Samsung Galaxy A55 5G 128GB',
     brand: 'Samsung',
-    tagline: 'Vua doanh số phân khúc tầm trung tại Thế Giới Di Động',
+    tagline: 'Vua doanh số phân khúc tầm trung với khung kim loại IP67',
     category: 'Samsung Galaxy',
     screen: 'Super AMOLED 6.6" Full HD+ 120Hz 1000 nits',
     chipset: 'Exynos 1480 8 nhân',
@@ -263,10 +257,10 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     battery: '5.000 mAh, Sạc nhanh 25W',
     tradeInBonus: 1500000,
     discountTag: 'Giảm 1.000.000đ',
-    giftDesc: 'Ưu đãi trả góp 0% + Tặng bảo hành 2 năm',
+    giftDesc: 'Ưu đãi trả góp 0% + Tặng bảo hành mở rộng',
     description: 'Thiết kế khung kim loại cao cấp chống nước IP67. Camera chụp đêm Nightography ấn tượng và viên pin 5000 mAh sử dụng 2 ngày.',
     imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/dtdd/samsung-galaxy-a55-5g',
+    officialUrl: 'https://samsung.com',
     colors: [
       { name: 'Xanh Xăng (Iceblue)', hex: '#93C5FD', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Tím Lilac', hex: '#C084FC', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' }
@@ -277,8 +271,6 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     ],
     features: ['Khung Kim Loại Sang Trọng', 'Kháng Nước Chống Bụi IP67', 'Pin 5000 mAh Sử Dụng 2 Ngày', 'Bảo Mật Knox Vault Đẳng Cấp']
   },
-
-  // --- XIAOMI & OPPO FLAGSHIP (CHUẨN THẾ GIỚI DI ĐỘNG) ---
   {
     id: 'xiaomi-15-ultra',
     name: 'Xiaomi 15 Ultra 5G 512GB',
@@ -295,7 +287,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     giftDesc: 'Tặng Bộ Photography Kit Leica + Bảo hành Premium 24 tháng',
     description: 'Đỉnh cao nhiếp ảnh di động chuyên nghiệp hợp tác cùng hãng ống kính huyền thoại Leica Đức. Kèm bộ Photography Kit chụp hình tay cầm độc đáo.',
     imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/dtdd/xiaomi-15-ultra',
+    officialUrl: 'https://mi.com',
     colors: [
       { name: 'Đen Da Thuộc (Black Leather)', hex: '#18181B', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Trắng Gốm (White Ceramic)', hex: '#FAFAFA', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' }
@@ -320,10 +312,10 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     battery: '5.910 mAh, Sạc siêu tốc 80W SuperVOOC',
     tradeInBonus: 4000000,
     discountTag: 'Giảm 2.000.000đ',
-    giftDesc: 'Tặng Loa Bluetooth JBL + Trả góp 0%',
+    giftDesc: 'Tặng Loa Bluetooth + Trả góp 0%',
     description: 'Kiệt tác camera hợp tác cùng Hasselblad Thụy Điển. Trang bị phím bấm Quick Button chụp ảnh chuyên nghiệp và viên pin 5910 mAh khổng lồ.',
     imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/dtdd/oppo-find-x8-pro',
+    officialUrl: 'https://oppo.com',
     colors: [
       { name: 'Trắng Ngọc Trai (Pearl White)', hex: '#F4F4F5', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Đen Thạch Anh (Space Black)', hex: '#18181B', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' }
@@ -333,8 +325,6 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     ],
     features: ['Camera Hasselblad Kép Periscope 3x & 6x', 'Pin Silicon-Carbon 5910 mAh', 'Phím Chụp Ảnh Quick Button', 'Kháng Nước IP68 / IP69']
   },
-
-  // --- IPAD & TABLET (CHUẨN THẾ GIỚI DI ĐỘNG) ---
   {
     id: 'ipad-pro-m4',
     name: 'iPad Pro 13 inch M4 Wifi 256GB',
@@ -351,7 +341,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     giftDesc: 'Giảm 10% khi mua kèm Apple Pencil Pro',
     description: 'Chiếc máy tính bảng mỏng nhất từ trước tới nay của Apple với độ mỏng chỉ 5.1mm. Màn hình Tandem OLED rực rỡ và sức mạnh chip M4 đột phá.',
     imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80',
-    officialUrl: 'https://www.thegioididong.com/may-tinh-bang/ipad-pro-13-inch-m4-cellular-256gb',
+    officialUrl: 'https://apple.com',
     colors: [
       { name: 'Đen Thần Không (Space Black)', hex: '#1D1D1F', imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Bạc Khí Chất (Silver)', hex: '#E3E4E6', imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80' }
