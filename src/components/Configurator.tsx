@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { VINFAST_PRODUCTS, VinFastProduct } from '@/data/cars';
 
 export function Configurator() {
   const [selectedCategory, setSelectedCategory] = useState<'Ô tô điện' | 'Xe máy điện'>('Ô tô điện');
-  
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   // Filter products by active category
   const filteredProducts = VINFAST_PRODUCTS.filter(p => p.category === selectedCategory);
   
@@ -14,7 +15,13 @@ export function Configurator() {
   const [buyBattery, setBuyBattery] = useState<boolean>(false);
   const [selectedVersion, setSelectedVersion] = useState<'Eco' | 'Plus'>('Plus');
 
-  // Handle Category Switch
+  // Simulate smooth skeleton loading on product switch for superior UX
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => setIsLoading(false), 400);
+    return () => clearTimeout(timer);
+  }, [selectedProduct.id, selectedCategory]);
+
   const handleCategoryChange = (cat: 'Ô tô điện' | 'Xe máy điện') => {
     setSelectedCategory(cat);
     const newProducts = VINFAST_PRODUCTS.filter(p => p.category === cat);
@@ -25,16 +32,14 @@ export function Configurator() {
   const activeProduct = filteredProducts.find(p => p.id === selectedProduct.id) || filteredProducts[0];
   const activeColor = activeProduct.colors[selectedColorIndex] || activeProduct.colors[0];
 
-  // Price Calculation
   const calculatedPrice = activeProduct.priceBase + (buyBattery ? activeProduct.batteryDeposit : 0) + (selectedVersion === 'Plus' && activeProduct.category === 'Ô tô điện' ? 80 : 0);
-
   const activeIndex = filteredProducts.findIndex(p => p.id === activeProduct.id);
 
   return (
-    <section id="configurator" className="py-24 px-6 relative overflow-hidden bg-slate-950">
-      {/* Dynamic Ambient Background Glow */}
+    <section id="configurator" className="py-24 px-6 relative overflow-hidden bg-slate-950/80">
+      {/* Ambient Lighting */}
       <div
-        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[700px] h-[700px] opacity-25 blur-[160px] animate-liquid-blob pointer-events-none transition-colors duration-1000"
+        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[700px] h-[700px] opacity-25 blur-[160px] animate-ambient-glow pointer-events-none transition-colors duration-1000"
         style={{ backgroundColor: activeColor.hex }}
       />
 
@@ -42,14 +47,14 @@ export function Configurator() {
         
         {/* Section Header */}
         <div className="text-center space-y-4">
-          <span className="px-5 py-2 rounded-full text-xs font-black text-red-400 liquid-pill uppercase tracking-widest inline-block border border-red-500/20">
-            SHOWROOM CHÍNH HÃNG VINFAST AUTO
+          <span className="px-5 py-2 rounded-full text-xs font-black text-red-400 glass-card uppercase tracking-widest inline-block border border-red-500/20">
+            SHOWROOM TƯƠNG TÁC KỸ THUẬT SỐ
           </span>
           <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tight">
-            Khám Phá & Đặt Cọc Trực Tuyến
+            Khám Phá Danh Mục VinFast
           </h2>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto font-normal">
-            Trải nghiệm trọn bộ 12 xe điện VinFast với hình ảnh HD sắc nét và thông số từ chính hãng.
+            Lựa chọn cấu hình, màu sắc và xem thông số chính hãng từ `shop.vinfastauto.com`.
           </p>
         </div>
 
@@ -60,25 +65,25 @@ export function Configurator() {
             className={`px-8 py-4 rounded-2xl text-sm font-black transition-all duration-500 cursor-pointer ${
               selectedCategory === 'Ô tô điện'
                 ? 'bg-gradient-to-r from-red-600 via-red-500 to-amber-500 text-white shadow-2xl shadow-red-600/50 scale-105 ring-2 ring-white/30'
-                : 'liquid-pill text-slate-400 hover:text-white'
+                : 'glass-card text-slate-400 hover:text-white'
             }`}
           >
-            🚗 Ô tô điện VinFast ({VINFAST_PRODUCTS.filter(p => p.category === 'Ô tô điện').length})
+            🚗 Ô tô điện ({VINFAST_PRODUCTS.filter(p => p.category === 'Ô tô điện').length})
           </button>
           <button
             onClick={() => handleCategoryChange('Xe máy điện')}
             className={`px-8 py-4 rounded-2xl text-sm font-black transition-all duration-500 cursor-pointer ${
               selectedCategory === 'Xe máy điện'
                 ? 'bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white shadow-2xl shadow-cyan-600/50 scale-105 ring-2 ring-white/30'
-                : 'liquid-pill text-slate-400 hover:text-white'
+                : 'glass-card text-slate-400 hover:text-white'
             }`}
           >
-            🛵 Xe máy điện VinFast ({VINFAST_PRODUCTS.filter(p => p.category === 'Xe máy điện').length})
+            🛵 Xe máy điện ({VINFAST_PRODUCTS.filter(p => p.category === 'Xe máy điện').length})
           </button>
         </div>
 
         {/* ULTRA SMOOTH iOS SLIDING TRACKER FOR PRODUCTS */}
-        <div className="relative p-2 rounded-full liquid-glass max-w-5xl mx-auto flex items-center justify-between overflow-x-auto no-scrollbar border border-white/15 shadow-2xl">
+        <div className="relative p-2 rounded-full glass-panel max-w-5xl mx-auto flex items-center justify-between overflow-x-auto no-scrollbar border border-white/15 shadow-2xl">
           
           {/* Animated Tracked Pill */}
           <div
@@ -113,11 +118,11 @@ export function Configurator() {
         {/* Main Workspace */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left 7 Cols: Ultra Luxury HD Image Display */}
+          {/* Left 7 Cols: Image Display with Skeleton State */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="relative liquid-glass rounded-3xl p-6 overflow-hidden min-h-[460px] flex flex-col items-center justify-center border border-white/15 shadow-2xl">
+            <div className="relative glass-panel rounded-3xl p-6 overflow-hidden min-h-[460px] flex flex-col items-center justify-center border border-white/15 shadow-2xl">
               
-              {/* Dynamic Glow */}
+              {/* Glow Effect */}
               <div
                 className="absolute inset-0 opacity-40 blur-3xl transition-all duration-700 pointer-events-none"
                 style={{
@@ -125,29 +130,35 @@ export function Configurator() {
                 }}
               />
 
-              {/* High Quality Real Photo Rendering */}
-              <div className="w-full h-[340px] sm:h-[400px] relative z-10 flex items-center justify-center p-2">
-                <img
-                  src={activeProduct.imageUrl}
-                  alt={activeProduct.name}
-                  className="w-full h-full object-cover rounded-2xl filter drop-shadow-[0_25px_35px_rgba(0,0,0,0.85)] transition-all duration-700 transform hover:scale-105 border border-white/10"
-                />
-              </div>
+              {/* Skeleton Screen Loading State */}
+              {isLoading ? (
+                <div className="w-full h-[340px] sm:h-[400px] rounded-2xl skeleton-shimmer flex items-center justify-center text-slate-400 font-bold text-sm">
+                  Đang tải hình ảnh xe HD...
+                </div>
+              ) : (
+                <div className="w-full h-[340px] sm:h-[400px] relative z-10 flex items-center justify-center p-2">
+                  <img
+                    src={activeProduct.imageUrl}
+                    alt={activeProduct.name}
+                    className="w-full h-full object-cover rounded-2xl filter drop-shadow-[0_25px_35px_rgba(0,0,0,0.85)] transition-all duration-700 transform hover:scale-105 border border-white/10"
+                  />
+                </div>
+              )}
 
-              <div className="absolute top-5 left-5 px-4 py-2 liquid-pill rounded-full text-xs font-bold text-slate-200">
+              <div className="absolute top-5 left-5 px-4 py-2 glass-card rounded-full text-xs font-bold text-slate-200">
                 Phân khúc: <strong className="text-cyan-400">{activeProduct.segment}</strong>
               </div>
 
-              <div className="absolute bottom-5 right-5 px-4 py-2 liquid-pill rounded-full text-xs font-black text-white">
+              <div className="absolute bottom-5 right-5 px-4 py-2 glass-card rounded-full text-xs font-black text-white">
                 Màu sơn: <strong style={{ color: activeColor.hex }}>{activeColor.name}</strong>
               </div>
             </div>
 
-            {/* Color Picker & Official Link Actions */}
-            <div className="liquid-glass p-6 rounded-3xl space-y-4 border border-white/15">
+            {/* Color Selector */}
+            <div className="glass-panel p-6 rounded-3xl space-y-4 border border-white/15">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-extrabold text-white uppercase tracking-wider">
-                  Màu sắc ngoại thất: <span className="text-cyan-400">{activeColor.name}</span>
+                  Màu ngoại thất: <span className="text-cyan-400">{activeColor.name}</span>
                 </span>
                 <span className="text-xs text-slate-400 font-medium">{activeProduct.colors.length} Tùy chọn chính hãng</span>
               </div>
@@ -169,7 +180,7 @@ export function Configurator() {
             </div>
 
             {/* Official VinFast Links Box */}
-            <div className="liquid-glass p-6 rounded-3xl flex flex-wrap items-center justify-between gap-4 border border-white/15">
+            <div className="glass-panel p-6 rounded-3xl flex flex-wrap items-center justify-between gap-4 border border-white/15">
               <span className="text-xs text-slate-300 font-bold">Liên kết chính hãng VinFast Auto:</span>
               <div className="flex items-center gap-3">
                 <a
@@ -178,7 +189,7 @@ export function Configurator() {
                   rel="noopener noreferrer"
                   className="px-5 py-2.5 rounded-xl text-xs font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all cursor-pointer"
                 >
-                  🌐 Trang Sản Phẩm
+                  🌐 Link Sản Phẩm
                 </a>
                 <a
                   href={activeProduct.specsUrl}
@@ -193,7 +204,7 @@ export function Configurator() {
           </div>
 
           {/* Right 5 Cols: Spec Sheet & Price */}
-          <div className="lg:col-span-5 liquid-glass p-8 rounded-3xl space-y-8 border border-white/15">
+          <div className="lg:col-span-5 glass-panel p-8 rounded-3xl space-y-8 border border-white/15">
             <div>
               <span className="text-xs text-cyan-400 font-black uppercase tracking-widest">{activeProduct.category} • {activeProduct.segment}</span>
               <h3 className="text-3xl font-black text-white mt-1">{activeProduct.name}</h3>
@@ -259,7 +270,7 @@ export function Configurator() {
               </div>
               <button
                 onClick={() => alert(`Cảm ơn bạn! Thông tin đăng ký xe ${activeProduct.name} đã được gửi tới Showroom VinFast.`)}
-                className="px-6 py-4 rounded-2xl font-black text-white liquid-red-btn text-xs tracking-wider uppercase cursor-pointer"
+                className="px-6 py-4 rounded-2xl font-black text-white btn-primary-red text-xs tracking-wider uppercase cursor-pointer"
               >
                 Đặt Cọc Giữ Xe
               </button>
