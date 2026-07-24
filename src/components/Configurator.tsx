@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { PHONE_PRODUCTS, PhoneProduct } from '@/data/phones';
-import { Smartphone, ShieldCheck, Zap, Palette, HardDrive, CheckCircle2, ShoppingCart, Tag, Rotate3D, Gift } from 'lucide-react';
+import { Smartphone, ShieldCheck, Zap, Palette, HardDrive, CheckCircle2, ShoppingCart, Tag, Rotate3D, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export function Configurator() {
   const [selectedBrand, setSelectedBrand] = useState<'All' | 'Apple' | 'Samsung' | 'Android'>('All');
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const filteredProducts = PHONE_PRODUCTS.filter(p => {
     if (selectedBrand === 'Apple') return p.brand === 'Apple';
@@ -36,6 +37,14 @@ export function Configurator() {
     }
     return () => clearInterval(interval);
   }, [is360Mode]);
+
+  // Track scroll handlers
+  const scrollTrack = (direction: 'left' | 'right') => {
+    if (trackRef.current) {
+      const scrollAmount = direction === 'left' ? -260 : 260;
+      trackRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   // Price calculations in VNĐ
   const basePriceVnd = activeStorage.price;
@@ -121,28 +130,57 @@ export function Configurator() {
           </button>
         </div>
 
-        {/* Product Track Selector (Fluid Scrollable Pills with Spring Hover) */}
-        <div className="relative p-2.5 rounded-2xl liquid-glass max-w-5xl mx-auto flex items-center gap-3 overflow-x-auto no-scrollbar shadow-2xl">
-          {filteredProducts.map((phone) => {
-            const isSelected = activeProduct.id === phone.id;
-            return (
-              <button
-                key={phone.id}
-                onClick={() => {
-                  setSelectedProduct(phone);
-                  setSelectedStorageIndex(0);
-                  setSelectedColorIndex(0);
-                }}
-                className={`shrink-0 py-2.5 px-5 rounded-xl text-xs font-black spring-tab whitespace-nowrap cursor-pointer ${
-                  isSelected
-                    ? 'liquid-button text-slate-950 shadow-xl scale-105 ring-2 ring-cyan-400/60'
-                    : 'bg-slate-950/60 text-slate-300 hover:text-white hover:bg-slate-900 border border-white/10'
-                }`}
-              >
-                {phone.name}
-              </button>
-            );
-          })}
+        {/* Product Track Selector (Spacious Scrollable Carousel with Arrow Controls) */}
+        <div className="relative max-w-5xl mx-auto flex items-center gap-2">
+          
+          <button
+            onClick={() => scrollTrack('left')}
+            className="w-10 h-10 rounded-2xl liquid-card flex items-center justify-center text-slate-300 hover:text-white shrink-0 z-20 cursor-pointer shadow-lg"
+            title="Cuộn sang trái"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <div 
+            ref={trackRef}
+            className="p-2.5 rounded-2xl liquid-glass flex-1 flex items-center gap-3 overflow-x-auto no-scrollbar shadow-2xl scroll-smooth"
+          >
+            {filteredProducts.map((phone) => {
+              const isSelected = activeProduct.id === phone.id;
+              // Clean short display name
+              const displayName = phone.name
+                .replace(' 256GB', '')
+                .replace(' 128GB', '')
+                .replace(' 512GB', '');
+
+              return (
+                <button
+                  key={phone.id}
+                  onClick={() => {
+                    setSelectedProduct(phone);
+                    setSelectedStorageIndex(0);
+                    setSelectedColorIndex(0);
+                  }}
+                  className={`shrink-0 py-3 px-6 rounded-xl text-xs font-extrabold spring-tab whitespace-nowrap cursor-pointer transition-all ${
+                    isSelected
+                      ? 'liquid-button text-slate-950 shadow-xl scale-105 ring-2 ring-cyan-400/60'
+                      : 'bg-slate-950/70 text-slate-300 hover:text-white hover:bg-slate-900 border border-white/10'
+                  }`}
+                >
+                  {displayName}
+                </button>
+              );
+            })}
+          </div>
+
+          <button
+            onClick={() => scrollTrack('right')}
+            className="w-10 h-10 rounded-2xl liquid-card flex items-center justify-center text-slate-300 hover:text-white shrink-0 z-20 cursor-pointer shadow-lg"
+            title="Cuộn sang phải"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
         </div>
 
         {/* Main Configurator Workspace */}
