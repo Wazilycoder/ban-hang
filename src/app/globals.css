@@ -11,7 +11,7 @@
 
   body {
     font-family: var(--font-inter);
-    background-color: #030712;
+    background-color: #050b18;
     color: #f8fafc;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -20,16 +20,16 @@
 
 /* UI/UX Pro Max Design System Tokens */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(13, 23, 46, 0.75);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5),
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6),
               inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
 }
 
 .glass-card {
-  background: rgba(30, 41, 59, 0.4);
+  background: rgba(23, 37, 68, 0.5);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -37,27 +37,26 @@
 }
 
 .glass-card:hover {
-  background: rgba(30, 41, 59, 0.7);
-  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(30, 48, 90, 0.7);
+  border-color: rgba(56, 189, 248, 0.4);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(220, 38, 38, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.25);
 }
 
-.btn-primary-red {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #991b1b 100%);
-  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.5),
-              inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.btn-primary-red:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 15px 35px -5px rgba(220, 38, 38, 0.7),
-              inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
-}
-
-.btn-primary-red:active {
-  transform: translateY(0) scale(0.98);
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Skeleton Loading Shimmer */
