@@ -10,7 +10,7 @@ export function Configurator() {
   const filteredProducts = PHONE_PRODUCTS.filter(p => {
     if (selectedBrand === 'Apple') return p.brand === 'Apple';
     if (selectedBrand === 'Samsung') return p.brand === 'Samsung';
-    if (selectedBrand === 'Android') return p.brand === 'Xiaomi' || p.brand === 'OPPO' || p.brand === 'ASUS';
+    if (selectedBrand === 'Android') return p.brand === 'Xiaomi' || p.brand === 'OPPO' || p.brand === 'ASUS' || p.brand === 'Vivo' || p.brand === 'Google';
     return true;
   });
 
@@ -58,13 +58,13 @@ export function Configurator() {
         {/* Header */}
         <div className="text-center space-y-3">
           <span className="px-4 py-1.5 rounded-full text-xs font-black text-cyan-400 liquid-glass uppercase tracking-widest inline-block">
-            TRẢI NGHIỆM 360° & TÙY CHỈNH CẤU HÌNH THẾ GIỚI DI ĐỘNG
+            TRẢI NGHIỆM 360° & TÙY CHỈNH CẤU HÌNH
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
             BẢNG GIÁ & CẤU HÌNH CHI TIẾT
           </h2>
           <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-            Xem hình ảnh xoay 360° thực tế, chọn dung lượng bộ nhớ, màu sơn Titan độc quyền và kiểm tra các ưu đãi giảm giá tại TGDD.
+            Xem hình ảnh xoay 360° thực tế, chọn dung lượng bộ nhớ, màu sơn Titan độc quyền và kiểm tra các ưu đãi trợ giá mới nhất.
           </p>
         </div>
 
@@ -121,8 +121,8 @@ export function Configurator() {
           </button>
         </div>
 
-        {/* Product Track Selector */}
-        <div className="relative p-2 rounded-2xl liquid-glass max-w-5xl mx-auto flex items-center justify-between overflow-x-auto no-scrollbar shadow-2xl">
+        {/* Product Track Selector (Scrollable Pills with Comfortable Spacing) */}
+        <div className="relative p-2.5 rounded-2xl liquid-glass max-w-5xl mx-auto flex items-center gap-3 overflow-x-auto no-scrollbar shadow-2xl">
           {filteredProducts.map((phone) => {
             const isSelected = activeProduct.id === phone.id;
             return (
@@ -133,10 +133,10 @@ export function Configurator() {
                   setSelectedStorageIndex(0);
                   setSelectedColorIndex(0);
                 }}
-                className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-black transition-all text-center whitespace-nowrap z-10 cursor-pointer ${
+                className={`shrink-0 py-2.5 px-5 rounded-xl text-xs font-black transition-all whitespace-nowrap cursor-pointer ${
                   isSelected
-                    ? 'liquid-button text-slate-950 scale-105'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'liquid-button text-slate-950 shadow-md scale-105'
+                    : 'bg-slate-950/60 text-slate-300 hover:text-white hover:bg-slate-900 border border-white/10'
                 }`}
               >
                 {phone.name}
@@ -276,7 +276,7 @@ export function Configurator() {
             {/* VIP Care Warranty Option */}
             <div className="space-y-3">
               <label className="text-xs font-black text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" /> Gói Bảo Hành Mở Rộng Thế Giới Di Động
+                <ShieldCheck className="w-4 h-4 text-emerald-400" /> Gói Bảo Hành Mở Rộng VIP Care
               </label>
               <div className="grid grid-cols-2 gap-3">
                 <button
@@ -323,7 +323,7 @@ export function Configurator() {
             <div className="pt-4 border-t border-white/10 space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-slate-400 font-bold uppercase">Tổng tiền thanh toán tại TGDD</span>
+                  <span className="text-xs text-slate-400 font-bold uppercase">Tổng tiền thanh toán dự kiến</span>
                   <div className="flex items-baseline gap-2 mt-0.5">
                     <div className="text-3xl font-black text-amber-400">
                       {grandTotal.toLocaleString('vi-VN')} <span className="text-sm font-normal text-slate-300">đ</span>
