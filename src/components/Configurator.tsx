@@ -68,7 +68,7 @@ export function Configurator() {
           </p>
         </div>
 
-        {/* Brand Switcher Tabs */}
+        {/* Brand Switcher Tabs with Spring Animation */}
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <button
             onClick={() => {
@@ -77,9 +77,9 @@ export function Configurator() {
               setSelectedStorageIndex(0);
               setSelectedColorIndex(0);
             }}
-            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black spring-tab cursor-pointer ${
               selectedBrand === 'All'
-                ? 'liquid-button text-slate-950 ring-2 ring-cyan-400/50'
+                ? 'liquid-button text-slate-950 ring-2 ring-cyan-400/50 shadow-xl'
                 : 'liquid-card text-slate-400 hover:text-white'
             }`}
           >
@@ -94,9 +94,9 @@ export function Configurator() {
               setSelectedStorageIndex(0);
               setSelectedColorIndex(0);
             }}
-            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black spring-tab cursor-pointer ${
               selectedBrand === 'Apple'
-                ? 'liquid-button text-slate-950 ring-2 ring-cyan-400/50'
+                ? 'liquid-button text-slate-950 ring-2 ring-cyan-400/50 shadow-xl'
                 : 'liquid-card text-slate-400 hover:text-white'
             }`}
           >
@@ -111,9 +111,9 @@ export function Configurator() {
               setSelectedStorageIndex(0);
               setSelectedColorIndex(0);
             }}
-            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+            className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black spring-tab cursor-pointer ${
               selectedBrand === 'Samsung'
-                ? 'bg-amber-500 text-slate-950 shadow-lg ring-2 ring-amber-400/50'
+                ? 'bg-amber-500 text-slate-950 shadow-lg ring-2 ring-amber-400/50 scale-105'
                 : 'liquid-card text-slate-400 hover:text-white'
             }`}
           >
@@ -121,7 +121,7 @@ export function Configurator() {
           </button>
         </div>
 
-        {/* Product Track Selector (Scrollable Pills with Comfortable Spacing) */}
+        {/* Product Track Selector (Fluid Scrollable Pills with Spring Hover) */}
         <div className="relative p-2.5 rounded-2xl liquid-glass max-w-5xl mx-auto flex items-center gap-3 overflow-x-auto no-scrollbar shadow-2xl">
           {filteredProducts.map((phone) => {
             const isSelected = activeProduct.id === phone.id;
@@ -133,9 +133,9 @@ export function Configurator() {
                   setSelectedStorageIndex(0);
                   setSelectedColorIndex(0);
                 }}
-                className={`shrink-0 py-2.5 px-5 rounded-xl text-xs font-black transition-all whitespace-nowrap cursor-pointer ${
+                className={`shrink-0 py-2.5 px-5 rounded-xl text-xs font-black spring-tab whitespace-nowrap cursor-pointer ${
                   isSelected
-                    ? 'liquid-button text-slate-950 shadow-md scale-105'
+                    ? 'liquid-button text-slate-950 shadow-xl scale-105 ring-2 ring-cyan-400/60'
                     : 'bg-slate-950/60 text-slate-300 hover:text-white hover:bg-slate-900 border border-white/10'
                 }`}
               >
@@ -156,9 +156,9 @@ export function Configurator() {
               <div className="absolute top-5 left-5 z-20">
                 <button
                   onClick={() => setIs360Mode(!is360Mode)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold spring-tab cursor-pointer ${
                     is360Mode
-                      ? 'liquid-button text-slate-950'
+                      ? 'liquid-button text-slate-950 shadow-lg'
                       : 'liquid-card text-cyan-400 hover:bg-cyan-950'
                   }`}
                 >
@@ -172,8 +172,8 @@ export function Configurator() {
                 <img
                   src={activeColor.imageUrl || activeProduct.imageUrl}
                   alt={activeProduct.name}
-                  className={`h-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.9)] transition-all duration-500 rounded-xl ${
-                    rotationAngle === 90 ? 'rotate-90' : rotationAngle === 180 ? 'scale-x-[-1]' : rotationAngle === 270 ? '-rotate-90' : ''
+                  className={`h-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.9)] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] rounded-xl ${
+                    rotationAngle === 90 ? 'rotate-90 scale-95' : rotationAngle === 180 ? 'scale-x-[-1]' : rotationAngle === 270 ? '-rotate-90 scale-95' : ''
                   }`}
                 />
               </div>
@@ -219,7 +219,7 @@ export function Configurator() {
                     key={color.name}
                     onClick={() => setSelectedColorIndex(idx)}
                     title={color.name}
-                    className={`group relative w-12 h-12 rounded-full border-2 transition-all duration-300 transform cursor-pointer flex items-center justify-center ${
+                    className={`group relative w-12 h-12 rounded-full border-2 transition-all duration-300 transform cursor-pointer flex items-center justify-center spring-tab ${
                       selectedColorIndex === idx
                         ? 'border-white scale-110 ring-4 ring-cyan-400/40 shadow-xl'
                         : 'border-slate-700 opacity-70 hover:opacity-100 hover:scale-105'
@@ -260,9 +260,9 @@ export function Configurator() {
                   <button
                     key={storage.capacity}
                     onClick={() => setSelectedStorageIndex(idx)}
-                    className={`p-3.5 rounded-2xl text-center border text-xs font-black transition-all cursor-pointer ${
+                    className={`p-3.5 rounded-2xl text-center border text-xs font-black spring-tab cursor-pointer ${
                       selectedStorageIndex === idx
-                        ? 'border-cyan-400 bg-cyan-950/40 text-white ring-2 ring-cyan-400/40'
+                        ? 'border-cyan-400 bg-cyan-950/40 text-white ring-2 ring-cyan-400/40 scale-105 shadow-lg'
                         : 'border-white/10 bg-slate-950 text-slate-400 hover:text-white'
                     }`}
                   >
@@ -281,7 +281,7 @@ export function Configurator() {
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => setVipWarranty(false)}
-                  className={`p-3.5 rounded-2xl text-left border text-xs font-bold transition-all cursor-pointer ${
+                  className={`p-3.5 rounded-2xl text-left border text-xs font-bold spring-tab cursor-pointer ${
                     !vipWarranty
                       ? 'border-emerald-400 bg-emerald-950/40 text-white ring-2 ring-emerald-400/30'
                       : 'border-white/10 bg-slate-950 text-slate-400 hover:text-white'
@@ -293,9 +293,9 @@ export function Configurator() {
 
                 <button
                   onClick={() => setVipWarranty(true)}
-                  className={`p-3.5 rounded-2xl text-left border text-xs font-bold transition-all cursor-pointer ${
+                  className={`p-3.5 rounded-2xl text-left border text-xs font-bold spring-tab cursor-pointer ${
                     vipWarranty
-                      ? 'border-emerald-400 bg-emerald-950/40 text-white ring-2 ring-emerald-400/30'
+                      ? 'border-emerald-400 bg-emerald-950/40 text-white ring-2 ring-emerald-400/30 scale-105 shadow-lg'
                       : 'border-white/10 bg-slate-950 text-slate-400 hover:text-white'
                   }`}
                 >
