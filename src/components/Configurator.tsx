@@ -5,6 +5,7 @@ import { VINFAST_PRODUCTS, VinFastProduct } from '@/data/cars';
 
 export function Configurator() {
   const [selectedCategory, setSelectedCategory] = useState<'Ô tô điện' | 'Xe máy điện'>('Ô tô điện');
+  const [displayMode, setDisplayMode] = useState<'vector' | 'photo'>('photo');
   
   // Filter products by active category
   const filteredProducts = VINFAST_PRODUCTS.filter(p => p.category === selectedCategory);
@@ -22,7 +23,6 @@ export function Configurator() {
     setSelectedColorIndex(0);
   };
 
-  // Keep selectedProduct valid when switching
   const activeProduct = filteredProducts.find(p => p.id === selectedProduct.id) || filteredProducts[0];
   const activeColor = activeProduct.colors[selectedColorIndex] || activeProduct.colors[0];
 
@@ -35,7 +35,7 @@ export function Configurator() {
     <section id="configurator" className="py-24 px-6 relative overflow-hidden">
       {/* Dynamic Ambient Background Blob */}
       <div
-        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] opacity-20 blur-[140px] animate-liquid-blob pointer-events-none transition-colors duration-1000"
+        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[650px] h-[650px] opacity-20 blur-[150px] animate-liquid-blob pointer-events-none transition-colors duration-1000"
         style={{ backgroundColor: activeColor.hex }}
       />
 
@@ -50,12 +50,12 @@ export function Configurator() {
             Tùy Chỉnh & Xem Thông Số Sản Phẩm
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal">
-            Trải nghiệm bộ lọc mượt mà cho toàn bộ danh mục **Ô tô điện** và **Xe máy điện** VinFast Việt Nam.
+            Trải nghiệm toàn bộ 12 sản phẩm **Ô tô điện** & **Xe máy điện** VinFast kèm ảnh chụp thực tế và link chính hãng.
           </p>
         </div>
 
-        {/* Category Switcher Tabs (Ô tô điện vs Xe máy điện) */}
-        <div className="flex items-center justify-center gap-4">
+        {/* Category Switcher Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <button
             onClick={() => handleCategoryChange('Ô tô điện')}
             className={`px-8 py-3.5 rounded-2xl text-sm font-black transition-all duration-500 transform ${
@@ -79,7 +79,7 @@ export function Configurator() {
         </div>
 
         {/* ULTRA SMOOTH iOS SLIDING TRACKER FOR PRODUCTS */}
-        <div className="relative p-2 rounded-full liquid-glass max-w-4xl mx-auto flex items-center justify-between overflow-x-auto no-scrollbar border border-white/15 shadow-2xl">
+        <div className="relative p-2 rounded-full liquid-glass max-w-5xl mx-auto flex items-center justify-between overflow-x-auto no-scrollbar border border-white/15 shadow-2xl">
           
           {/* Animated Tracked Pill */}
           <div
@@ -114,53 +114,79 @@ export function Configurator() {
         {/* Main Workspace */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left 7 Cols: Dynamic Vector Render & Offical Links */}
+          {/* Left 7 Cols: Image/Vector Showcase with Toggle */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="relative liquid-glass rounded-3xl p-8 overflow-hidden min-h-[400px] flex flex-col items-center justify-center">
+            <div className="relative liquid-glass rounded-3xl p-6 overflow-hidden min-h-[420px] flex flex-col items-center justify-center">
               
+              {/* Image Mode vs Vector Mode Switcher */}
+              <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 p-1 rounded-full bg-slate-900/80 border border-white/10 text-[11px] font-bold">
+                <button
+                  onClick={() => setDisplayMode('photo')}
+                  className={`px-3 py-1 rounded-full transition-all ${displayMode === 'photo' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-white'}`}
+                >
+                  🖼️ Ảnh HD
+                </button>
+                <button
+                  onClick={() => setDisplayMode('vector')}
+                  className={`px-3 py-1 rounded-full transition-all ${displayMode === 'vector' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-white'}`}
+                >
+                  🎨 3D Silhouette
+                </button>
+              </div>
+
               {/* Dynamic Glow */}
               <div
-                className="absolute inset-0 opacity-40 blur-3xl transition-all duration-700 pointer-events-none"
+                className="absolute inset-0 opacity-30 blur-3xl transition-all duration-700 pointer-events-none"
                 style={{
                   background: `radial-gradient(circle at 50% 50%, ${activeColor.hex} 0%, transparent 70%)`
                 }}
               />
 
-              {/* Dynamic SVG Silhouette */}
-              <div className="w-full h-[280px] sm:h-[340px] relative z-10 flex items-center justify-center">
-                <svg className="w-full h-full p-4 drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)] transition-all duration-700 ease-out transform hover:scale-105" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {activeProduct.category === 'Ô tô điện' ? (
-                    <>
-                      <path d="M 160 210 Q 400 250 640 210" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" />
-                      <path d="M 360 230 L 400 260 L 440 230" stroke="#E51937" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d={activeProduct.svgPath} fill={activeColor.hex} opacity="0.95" className="transition-all duration-700 ease-out" />
-                      <path d="M 280 180 Q 400 130 520 150" stroke="#38BDF8" strokeWidth="4" strokeLinecap="round" opacity="0.85" />
-                      <circle cx="240" cy="275" r="44" fill="#0F172A" stroke="#E51937" strokeWidth="6" />
-                      <circle cx="240" cy="275" r="22" fill="#334155" />
-                      <circle cx="560" cy="275" r="44" fill="#0F172A" stroke="#E51937" strokeWidth="6" />
-                      <circle cx="560" cy="275" r="22" fill="#334155" />
-                      <ellipse cx="400" cy="320" rx="350" ry="14" fill={activeColor.hex} opacity="0.6" />
-                    </>
-                  ) : (
-                    <>
-                      {/* E-Scooter SVG Render */}
-                      <path d="M 320 140 L 360 220 L 440 230 C 480 230, 520 250, 540 280" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" />
-                      <path d={activeProduct.svgPath} fill={activeColor.hex} opacity="0.95" className="transition-all duration-700 ease-out" />
-                      <circle cx="300" cy="280" r="36" fill="#0F172A" stroke="#00F0FF" strokeWidth="5" />
-                      <circle cx="300" cy="280" r="18" fill="#334155" />
-                      <circle cx="540" cy="280" r="36" fill="#0F172A" stroke="#00F0FF" strokeWidth="5" />
-                      <circle cx="540" cy="280" r="18" fill="#334155" />
-                      <ellipse cx="420" cy="320" rx="260" ry="12" fill={activeColor.hex} opacity="0.6" />
-                    </>
-                  )}
-                </svg>
-              </div>
+              {displayMode === 'photo' ? (
+                /* High-Res Photo Render */
+                <div className="w-full h-[320px] sm:h-[380px] relative z-10 flex items-center justify-center p-2">
+                  <img
+                    src={activeProduct.imageUrl}
+                    alt={activeProduct.name}
+                    className="w-full h-full object-cover rounded-2xl transition-all duration-700 transform hover:scale-105 shadow-2xl border border-white/10"
+                  />
+                </div>
+              ) : (
+                /* Vector Silhouette Render */
+                <div className="w-full h-[280px] sm:h-[340px] relative z-10 flex items-center justify-center">
+                  <svg className="w-full h-full p-4 drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)] transition-all duration-700 ease-out transform hover:scale-105" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {activeProduct.category === 'Ô tô điện' ? (
+                      <>
+                        <path d="M 160 210 Q 400 250 640 210" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" />
+                        <path d="M 360 230 L 400 260 L 440 230" stroke="#E51937" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d={activeProduct.svgPath} fill={activeColor.hex} opacity="0.95" className="transition-all duration-700 ease-out" />
+                        <path d="M 280 180 Q 400 130 520 150" stroke="#38BDF8" strokeWidth="4" strokeLinecap="round" opacity="0.85" />
+                        <circle cx="240" cy="275" r="44" fill="#0F172A" stroke="#E51937" strokeWidth="6" />
+                        <circle cx="240" cy="275" r="22" fill="#334155" />
+                        <circle cx="560" cy="275" r="44" fill="#0F172A" stroke="#E51937" strokeWidth="6" />
+                        <circle cx="560" cy="275" r="22" fill="#334155" />
+                        <ellipse cx="400" cy="320" rx="350" ry="14" fill={activeColor.hex} opacity="0.6" />
+                      </>
+                    ) : (
+                      <>
+                        <path d="M 320 140 L 360 220 L 440 230 C 480 230, 520 250, 540 280" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" />
+                        <path d={activeProduct.svgPath} fill={activeColor.hex} opacity="0.95" className="transition-all duration-700 ease-out" />
+                        <circle cx="300" cy="280" r="36" fill="#0F172A" stroke="#00F0FF" strokeWidth="5" />
+                        <circle cx="300" cy="280" r="18" fill="#334155" />
+                        <circle cx="540" cy="280" r="36" fill="#0F172A" stroke="#00F0FF" strokeWidth="5" />
+                        <circle cx="540" cy="280" r="18" fill="#334155" />
+                        <ellipse cx="420" cy="320" rx="260" ry="12" fill={activeColor.hex} opacity="0.6" />
+                      </>
+                    )}
+                  </svg>
+                </div>
+              )}
 
-              <div className="absolute top-6 left-6 px-4 py-2 liquid-pill rounded-full text-xs font-bold text-slate-200">
+              <div className="absolute top-4 left-4 px-4 py-2 liquid-pill rounded-full text-xs font-bold text-slate-200">
                 Phân khúc: <strong className="text-cyan-400">{activeProduct.segment}</strong>
               </div>
 
-              <div className="absolute bottom-6 right-6 px-4 py-2 liquid-pill rounded-full text-xs font-black text-white">
+              <div className="absolute bottom-4 right-4 px-4 py-2 liquid-pill rounded-full text-xs font-black text-white">
                 Màu sắc: <strong style={{ color: activeColor.hex }}>{activeColor.name}</strong>
               </div>
             </div>
@@ -192,7 +218,7 @@ export function Configurator() {
 
             {/* Official VinFast Links Box */}
             <div className="glass-panel p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4 border border-white/10">
-              <span className="text-xs text-slate-300 font-bold">Trang chính hãng VinFast Auto:</span>
+              <span className="text-xs text-slate-300 font-bold">Liên kết chính hãng VinFast Auto:</span>
               <div className="flex items-center gap-3">
                 <a
                   href={activeProduct.officialUrl}
