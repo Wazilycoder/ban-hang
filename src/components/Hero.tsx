@@ -259,10 +259,10 @@ export function Hero() {
 
                 {/* Specs summary */}
                 <div className="grid grid-cols-2 gap-2 text-[11px] bg-slate-950/80 p-3 rounded-xl border border-white/5 text-slate-300">
-                  <div>Màn: <strong class="text-white">{phone.screen.split(' ')[0]}</strong></div>
-                  <div>Chip: <strong class="text-cyan-400">{phone.chipset.split(' ')[0]}</strong></div>
-                  <div>RAM: <strong class="text-white">{phone.ram}</strong></div>
-                  <div>Pin: <strong class="text-emerald-400">{phone.battery.split(',')[0]}</strong></div>
+                  <div>Màn: <strong className="text-white">{phone.screen.split(' ')[0]}</strong></div>
+                  <div>Chip: <strong className="text-cyan-400">{phone.chipset.split(' ')[0]}</strong></div>
+                  <div>RAM: <strong className="text-white">{phone.ram}</strong></div>
+                  <div>Pin: <strong className="text-emerald-400">{phone.battery.split(',')[0]}</strong></div>
                 </div>
 
                 {/* Price tag */}
