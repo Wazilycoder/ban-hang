@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PHONE_PRODUCTS, PhoneProduct } from '@/data/phones';
-import { Smartphone, ShieldCheck, Zap, Palette, HardDrive, CheckCircle2, ShoppingCart, Tag } from 'lucide-react';
+import { Smartphone, ShieldCheck, Zap, Palette, HardDrive, CheckCircle2, ShoppingCart, Tag, Rotate3D } from 'lucide-react';
 
 export function Configurator() {
   const [selectedBrand, setSelectedBrand] = useState<'All' | 'Apple' | 'Samsung' | 'Android'>('All');
@@ -10,7 +10,7 @@ export function Configurator() {
   const filteredProducts = PHONE_PRODUCTS.filter(p => {
     if (selectedBrand === 'Apple') return p.brand === 'Apple';
     if (selectedBrand === 'Samsung') return p.brand === 'Samsung';
-    if (selectedBrand === 'Android') return p.brand === 'Xiaomi' || p.brand === 'OPPO';
+    if (selectedBrand === 'Android') return p.brand === 'Xiaomi' || p.brand === 'OPPO' || p.brand === 'ASUS';
     return true;
   });
 
@@ -19,10 +19,23 @@ export function Configurator() {
   const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
   const [vipWarranty, setVipWarranty] = useState<boolean>(false);
   const [includeAccessory, setIncludeAccessory] = useState<boolean>(true);
+  const [is360Mode, setIs360Mode] = useState<boolean>(false);
+  const [rotationAngle, setRotationAngle] = useState<number>(0);
 
   const activeProduct = filteredProducts.find(p => p.id === selectedProduct.id) || filteredProducts[0];
   const activeStorage = activeProduct.storages[selectedStorageIndex] || activeProduct.storages[0];
   const activeColor = activeProduct.colors[selectedColorIndex] || activeProduct.colors[0];
+
+  // Auto rotation timer for 360 mode
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (is360Mode) {
+      interval = setInterval(() => {
+        setRotationAngle((prev) => (prev + 90) % 360);
+      }, 2000);
+    }
+    return () => clearInterval(interval);
+  }, [is360Mode]);
 
   // Price calculations
   const basePriceVnd = activeStorage.price * 1000000;
@@ -45,7 +58,7 @@ export function Configurator() {
         {/* Header */}
         <div className="text-center space-y-3">
           <span className="px-4 py-1.5 rounded-full text-xs font-black text-cyan-400 bg-cyan-950/80 border border-cyan-500/30 uppercase tracking-widest inline-block">
-            TÙY CHỈNH CẤU HÌNH & BẢO HÀNH
+            TÙY CHỈNH CẤU HÌNH & TRẢI NGHIỆM 360°
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
             BẢNG GIÁ & CẤU HÌNH FLAGSHIP CHI TIẾT
@@ -66,7 +79,7 @@ export function Configurator() {
             }}
             className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
               selectedBrand === 'All'
-                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-lg shadow-cyan-500/30 ring-2 ring-cyan-400/50'
+                ? 'bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-500/30 ring-2 ring-cyan-400/50'
                 : 'bg-slate-900 text-slate-400 hover:text-white border border-white/10'
             }`}
           >
@@ -83,7 +96,7 @@ export function Configurator() {
             }}
             className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
               selectedBrand === 'Apple'
-                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-lg shadow-cyan-500/30 ring-2 ring-cyan-400/50'
+                ? 'bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-500/30 ring-2 ring-cyan-400/50'
                 : 'bg-slate-900 text-slate-400 hover:text-white border border-white/10'
             }`}
           >
@@ -122,7 +135,7 @@ export function Configurator() {
                 }}
                 className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-black transition-all text-center whitespace-nowrap z-10 cursor-pointer ${
                   isSelected
-                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-md scale-105'
+                    ? 'bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-md scale-105'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
@@ -139,21 +152,54 @@ export function Configurator() {
           <div className="lg:col-span-6 space-y-6">
             <div className="relative bg-slate-900/90 rounded-3xl p-6 border border-white/15 shadow-2xl min-h-[460px] flex flex-col items-center justify-center">
               
+              {/* Top Controls: 360 Rotation Toggle */}
+              <div className="absolute top-5 left-5 z-20">
+                <button
+                  onClick={() => setIs360Mode(!is360Mode)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+                    is360Mode
+                      ? 'bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-400/30'
+                      : 'bg-slate-950/80 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-950'
+                  }`}
+                >
+                  <Rotate3D className={`w-4 h-4 ${is360Mode ? 'animate-spin' : ''}`} />
+                  {is360Mode ? 'Đang xoay 360°...' : 'Xoay 360° Trực Quan'}
+                </button>
+              </div>
+
+              {/* Display Frame */}
               <div className="w-full h-[340px] sm:h-[400px] relative z-10 flex items-center justify-center p-4 bg-slate-950 rounded-2xl border border-white/5">
                 <img
                   src={activeColor.imageUrl || activeProduct.imageUrl}
                   alt={activeProduct.name}
-                  className="h-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.9)] transition-all duration-500 rounded-xl"
+                  className={`h-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.9)] transition-all duration-500 rounded-xl ${
+                    rotationAngle === 90 ? 'rotate-90' : rotationAngle === 180 ? 'scale-x-[-1]' : rotationAngle === 270 ? '-rotate-90' : ''
+                  }`}
                 />
               </div>
 
+              {/* 360 Angle Slider */}
+              <div className="w-full pt-3 flex items-center gap-4 px-2 z-20">
+                <span className="text-[11px] text-slate-400 font-bold whitespace-nowrap">Góc xoay: {rotationAngle}°</span>
+                <input
+                  type="range"
+                  min="0"
+                  max="360"
+                  step="90"
+                  value={rotationAngle}
+                  onChange={(e) => setRotationAngle(Number(e.target.value))}
+                  className="w-full accent-cyan-400 cursor-pointer"
+                />
+                <span className="text-[11px] text-cyan-400 font-bold">360°</span>
+              </div>
+
               {/* Bottom Display Labels */}
-              <div className="w-full flex items-center justify-between pt-4 text-xs font-extrabold text-slate-300">
+              <div className="w-full flex items-center justify-between pt-4 text-xs font-extrabold text-slate-300 border-t border-white/10 mt-3">
                 <span>
                   Màu sắc: <strong style={{ color: activeColor.hex }}>{activeColor.name}</strong>
                 </span>
                 <span className="text-cyan-400">
-                  Phiên bản dung lượng: <strong>{activeStorage.capacity}</strong>
+                  Dung lượng: <strong>{activeStorage.capacity}</strong>
                 </span>
               </div>
             </div>
@@ -283,7 +329,7 @@ export function Configurator() {
 
                 <a
                   href="#store-order"
-                  className="px-6 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-xl flex items-center gap-2 cursor-pointer"
+                  className="px-6 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-xl flex items-center gap-2 cursor-pointer"
                 >
                   <ShoppingCart className="w-4 h-4" />
                   ĐẶT MUA NGAY
