@@ -19,45 +19,45 @@
 }
 
 /* ==========================================================================
-   LIQUID GLASS DESIGN SYSTEM TOKENS & ULTRA FLUID SPRING ANIMATIONS
+   LIQUID GLASS VISIONOS DESIGN SYSTEM - WORLD CLASS ANIMATIONS & SHADOWS
    ========================================================================== */
 
-/* Liquid Glass Panel */
+/* Specular Liquid Glass Container */
 .liquid-glass {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.09) 0%,
-    rgba(15, 23, 42, 0.78) 50%,
-    rgba(6, 182, 212, 0.06) 100%
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(15, 23, 42, 0.82) 50%,
+    rgba(6, 182, 212, 0.08) 100%
   );
-  backdrop-filter: blur(28px) saturate(210%);
-  -webkit-backdrop-filter: blur(28px) saturate(210%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(32px) saturate(220%);
+  -webkit-backdrop-filter: blur(32px) saturate(220%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 
-    0 30px 60px -12px rgba(0, 0, 0, 0.75),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.35),
-    0 0 40px 0 rgba(6, 182, 212, 0.15);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    0 30px 60px -12px rgba(0, 0, 0, 0.85),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4),
+    0 0 50px 0 rgba(6, 182, 212, 0.18);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Liquid Glass Card with Smooth Spring Hover */
+/* Luxury Liquid Glass Card with Specular Reflection Lightbeam */
 .liquid-card {
   position: relative;
   background: linear-gradient(
     145deg,
-    rgba(30, 41, 59, 0.65) 0%,
-    rgba(15, 23, 42, 0.85) 100%
+    rgba(30, 41, 59, 0.7) 0%,
+    rgba(15, 23, 42, 0.9) 100%
   );
-  backdrop-filter: blur(22px) saturate(190%);
-  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.55);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              border-color 0.3s ease,
-              box-shadow 0.3s ease,
-              background-color 0.3s ease;
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background-color 0.35s ease;
   overflow: hidden;
 }
 
@@ -71,25 +71,25 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.22) 50%,
     transparent 100%
   );
   transform: skewX(-25deg);
-  transition: left 0.75s ease-in-out;
+  transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
 .liquid-card:hover {
   transform: translateY(-8px) scale(1.025);
-  border-color: rgba(6, 182, 212, 0.6);
+  border-color: rgba(6, 182, 212, 0.7);
   box-shadow: 
-    0 25px 50px -12px rgba(6, 182, 212, 0.35),
-    0 0 35px 0 rgba(14, 165, 233, 0.3),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.45);
+    0 25px 60px -12px rgba(6, 182, 212, 0.4),
+    0 0 40px 0 rgba(14, 165, 233, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
 }
 
 .liquid-card:hover::before {
-  left: 150%;
+  left: 160%;
 }
 
 .liquid-card:active {
@@ -97,21 +97,21 @@
   transition: transform 0.1s ease;
 }
 
-/* Ultra Fluid Liquid Glass Button */
+/* Ultra Liquid Button with Glowing Aura */
 .liquid-button {
   position: relative;
   background: linear-gradient(
     135deg,
     #06b6d4 0%,
-    #0284c7 50%,
+    #0284c7 45%,
     #3b82f6 100%
   );
   box-shadow: 
-    0 10px 25px -5px rgba(6, 182, 212, 0.5),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.45);
+    0 12px 30px -6px rgba(6, 182, 212, 0.55),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
   transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              box-shadow 0.3s ease,
-              filter 0.3s ease;
+              box-shadow 0.35s ease,
+              filter 0.35s ease;
   overflow: hidden;
 }
 
@@ -119,17 +119,17 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.45), transparent 70%);
-  opacity: 0.8;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.5), transparent 70%);
+  opacity: 0.85;
   transition: opacity 0.3s ease;
 }
 
 .liquid-button:hover {
   transform: translateY(-3px) scale(1.04);
   box-shadow: 
-    0 20px 45px -5px rgba(6, 182, 212, 0.8),
-    0 0 30px 0 rgba(59, 130, 246, 0.65),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+    0 22px 50px -5px rgba(6, 182, 212, 0.85),
+    0 0 35px 0 rgba(59, 130, 246, 0.7),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
 }
 
 .liquid-button:active {
@@ -139,24 +139,27 @@
 
 /* Spring Interactive Tab Pills */
 .spring-tab {
-  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
 }
 
 .spring-tab:hover {
-  transform: translateY(-2px) scale(1.03);
+  transform: translateY(-2px) scale(1.035);
 }
 
 .spring-tab:active {
   transform: translateY(0) scale(0.97);
 }
 
-/* Iridescent Gradient Text */
+/* Iridescent Text Gradient */
 .liquid-text-gradient {
   background: linear-gradient(
     135deg,
     #38bdf8 0%,
-    #818cf8 35%,
-    #c084fc 70%,
+    #818cf8 30%,
+    #c084fc 65%,
     #f472b6 100%
   );
   -webkit-background-clip: text;
@@ -164,11 +167,11 @@
   background-clip: text;
 }
 
-/* Fluid Keyframe Animations */
+/* Keyframe Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.98);
+    transform: translateY(14px) scale(0.98);
   }
   to {
     opacity: 1;
@@ -183,33 +186,49 @@
 @keyframes liquid-glow {
   0%, 100% {
     transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0.3;
+    opacity: 0.35;
   }
   33% {
-    transform: translate(50px, -50px) scale(1.2) rotate(120deg);
-    opacity: 0.45;
+    transform: translate(60px, -60px) scale(1.25) rotate(120deg);
+    opacity: 0.5;
   }
   66% {
-    transform: translate(-30px, 30px) scale(0.9) rotate(240deg);
+    transform: translate(-40px, 40px) scale(0.85) rotate(240deg);
     opacity: 0.25;
   }
 }
 
 .animate-liquid-glow {
-  animation: liquid-glow 15s infinite ease-in-out;
+  animation: liquid-glow 16s infinite ease-in-out;
 }
 
 @keyframes float-gentle {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-12px) rotate(1deg);
   }
 }
 
 .animate-float {
-  animation: float-gentle 4s ease-in-out infinite;
+  animation: float-gentle 4.5s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(6, 182, 212, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.5s infinite;
 }
 
 /* Hide scrollbars */
