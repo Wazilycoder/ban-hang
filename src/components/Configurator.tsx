@@ -5,7 +5,8 @@ import { VINFAST_PRODUCTS, VinFastProduct } from '@/data/cars';
 
 export function Configurator() {
   const [selectedCategory, setSelectedCategory] = useState<'Ô tô điện' | 'Xe máy điện'>('Ô tô điện');
-  const [displayMode, setDisplayMode] = useState<'vector' | 'photo'>('photo');
+  const [displayMode, setDisplayMode] = useState<'photo' | 'vector'>('photo');
+  const [imgError, setImgError] = useState<boolean>(false);
   
   // Filter products by active category
   const filteredProducts = VINFAST_PRODUCTS.filter(p => p.category === selectedCategory);
@@ -21,6 +22,7 @@ export function Configurator() {
     const newProducts = VINFAST_PRODUCTS.filter(p => p.category === cat);
     setSelectedProduct(newProducts[0]);
     setSelectedColorIndex(0);
+    setImgError(false);
   };
 
   const activeProduct = filteredProducts.find(p => p.id === selectedProduct.id) || filteredProducts[0];
@@ -50,7 +52,7 @@ export function Configurator() {
             Tùy Chỉnh & Xem Thông Số Sản Phẩm
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal">
-            Trải nghiệm toàn bộ 12 sản phẩm **Ô tô điện** & **Xe máy điện** VinFast kèm ảnh chụp thực tế và link chính hãng.
+            Trải nghiệm trọn bộ 12 sản phẩm **Ô tô điện** & **Xe máy điện** VinFast tích hợp link ảnh chính hãng `shop.vinfastauto.com`.
           </p>
         </div>
 
@@ -98,6 +100,7 @@ export function Configurator() {
                 onClick={() => {
                   setSelectedProduct(product);
                   setSelectedColorIndex(0);
+                  setImgError(false);
                 }}
                 className={`flex-1 py-3 px-3 rounded-full text-xs sm:text-sm font-black transition-all duration-300 transform active:scale-95 text-center whitespace-nowrap z-10 ${
                   isSelected
@@ -118,7 +121,7 @@ export function Configurator() {
           <div className="lg:col-span-7 space-y-6">
             <div className="relative liquid-glass rounded-3xl p-6 overflow-hidden min-h-[420px] flex flex-col items-center justify-center">
               
-              {/* Image Mode vs Vector Mode Switcher */}
+              {/* Mode Toggle Switcher */}
               <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 p-1 rounded-full bg-slate-900/80 border border-white/10 text-[11px] font-bold">
                 <button
                   onClick={() => setDisplayMode('photo')}
@@ -130,7 +133,7 @@ export function Configurator() {
                   onClick={() => setDisplayMode('vector')}
                   className={`px-3 py-1 rounded-full transition-all ${displayMode === 'vector' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-white'}`}
                 >
-                  🎨 3D Silhouette
+                  🎨 3D Vector
                 </button>
               </div>
 
@@ -142,17 +145,18 @@ export function Configurator() {
                 }}
               />
 
-              {displayMode === 'photo' ? (
-                /* High-Res Photo Render */
+              {displayMode === 'photo' && !imgError ? (
+                /* Official HD Image Render with Fallback */
                 <div className="w-full h-[320px] sm:h-[380px] relative z-10 flex items-center justify-center p-2">
                   <img
                     src={activeProduct.imageUrl}
                     alt={activeProduct.name}
-                    className="w-full h-full object-cover rounded-2xl transition-all duration-700 transform hover:scale-105 shadow-2xl border border-white/10"
+                    onError={() => setImgError(true)}
+                    className="max-w-full max-h-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)] transition-all duration-700 transform hover:scale-105"
                   />
                 </div>
               ) : (
-                /* Vector Silhouette Render */
+                /* Vector Silhouette Render Fallback */
                 <div className="w-full h-[280px] sm:h-[340px] relative z-10 flex items-center justify-center">
                   <svg className="w-full h-full p-4 drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)] transition-all duration-700 ease-out transform hover:scale-105" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
                     {activeProduct.category === 'Ô tô điện' ? (
