@@ -21,49 +21,65 @@ export function Configurator() {
         className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[550px] h-[550px] opacity-25 blur-[120px] animate-liquid-blob pointer-events-none transition-colors duration-1000"
         style={{ backgroundColor: activeColor.hex }}
       />
-      <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-cyan-600/20 blur-[130px] animate-liquid-blob pointer-events-none" />
 
       <div className="max-w-7xl mx-auto space-y-12 relative z-10">
         {/* Section Header */}
         <div className="text-center space-y-4">
           <span className="px-4 py-1.5 rounded-full text-xs font-black text-red-400 liquid-pill uppercase tracking-widest inline-block">
-            BỘ CẤU HÌNH TƯƠNG TÁC 360° (iOS LIQUID UI)
+            BỘ CẤU HÌNH TƯƠNG TÁC 360° (iOS SLIDING LIQUID TOGGLE)
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
             Tùy Chỉnh Dòng Xe VinFast Của Bạn
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal">
-            Trải nghiệm bộ tùy chỉnh chuyển động siêu mượt theo phong cách iOS Liquid Glassmorphism.
+            Trải nghiệm bộ chuyển đổi dòng xe với thanh trượt nền mượt tuyệt đối chuẩn iOS Fluid Spring.
           </p>
         </div>
 
-        {/* Liquid Sliding Car Selection Segment Controls */}
-        <div className="p-2 rounded-full liquid-glass max-w-2xl mx-auto flex items-center justify-center gap-2">
-          {VINFAST_CARS.map((car) => (
-            <button
-              key={car.id}
-              onClick={() => {
-                setSelectedCar(car);
-                setSelectedColorIndex(0);
-              }}
-              className={`flex-1 py-3 px-4 rounded-full text-xs sm:text-sm font-black transition-all duration-500 ease-out ${
-                selectedCar.id === car.id
-                  ? 'bg-gradient-to-r from-red-600 via-red-500 to-amber-500 text-white shadow-lg shadow-red-600/40 scale-105 ring-2 ring-white/30'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              {car.name}
-            </button>
-          ))}
+        {/* ULTRA SMOOTH iOS LIQUID SLIDING SEGMENT CONTROL */}
+        <div className="relative p-2 rounded-full liquid-glass max-w-3xl mx-auto grid grid-cols-4 gap-1 items-center overflow-hidden border border-white/15 shadow-2xl">
+          
+          {/* iOS Animated Sliding Pill Background Tracker */}
+          <div
+            className="absolute top-2 bottom-2 rounded-full bg-gradient-to-r from-red-600 via-red-500 to-amber-500 shadow-lg shadow-red-600/50 transition-all duration-500 cubic-bezier(0.175, 0.885, 0.32, 1.275) pointer-events-none"
+            style={{
+              width: 'calc(25% - 6px)',
+              left: `calc(${VINFAST_CARS.findIndex(c => c.id === selectedCar.id) * 25}% + 3px)`
+            }}
+          >
+            {/* Liquid Surface Highlight */}
+            <div className="absolute inset-0 rounded-full bg-white/20 blur-[1px]" />
+          </div>
+
+          {/* Interactive Button Items */}
+          {VINFAST_CARS.map((car) => {
+            const isSelected = selectedCar.id === car.id;
+            return (
+              <button
+                key={car.id}
+                onClick={() => {
+                  setSelectedCar(car);
+                  setSelectedColorIndex(0);
+                }}
+                className={`relative z-10 py-3.5 px-2 rounded-full text-xs sm:text-sm font-black transition-all duration-300 transform active:scale-95 text-center ${
+                  isSelected
+                    ? 'text-white scale-105 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]'
+                    : 'text-slate-400 hover:text-slate-100 hover:scale-102'
+                }`}
+              >
+                {car.name}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Main Interactive Liquid Glass Workspace */}
+        {/* Main Interactive Workspace */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
-          {/* Left 7 Cols: Dynamic Vector Showcase with Liquid Glow */}
+          {/* Left 7 Cols: Dynamic Vector Showcase with Motion Effects */}
           <div className="lg:col-span-7 space-y-6">
             <div className="relative liquid-glass rounded-3xl p-8 overflow-hidden min-h-[400px] flex flex-col items-center justify-center">
               
-              {/* iOS Liquid Light Glow */}
+              {/* Dynamic Color Rays */}
               <div
                 className="absolute inset-0 opacity-40 blur-3xl transition-all duration-700 pointer-events-none"
                 style={{
@@ -74,23 +90,18 @@ export function Configurator() {
               {/* Dynamic Animated Vector Profile */}
               <div className="w-full h-[280px] sm:h-[340px] relative z-10 flex items-center justify-center">
                 <svg className="w-full h-full p-4 drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)] transition-all duration-700 ease-out transform hover:scale-105" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Front Light Bar */}
                   <path d="M 160 210 Q 400 250 640 210" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" />
                   <path d="M 360 230 L 400 260 L 440 230" stroke="#E51937" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
 
-                  {/* Main Car Body Profile */}
                   <path d={selectedCar.svgPath} fill={activeColor.hex} opacity="0.95" className="transition-all duration-700 ease-out" />
 
-                  {/* Windows Silhouette */}
                   <path d="M 280 180 Q 400 130 520 150" stroke="#38BDF8" strokeWidth="4" strokeLinecap="round" opacity="0.85" />
 
-                  {/* Wheels */}
                   <circle cx="240" cy="275" r="44" fill="#0F172A" stroke="#E51937" strokeWidth="6" />
                   <circle cx="240" cy="275" r="22" fill="#334155" />
                   <circle cx="560" cy="275" r="44" fill="#0F172A" stroke="#E51937" strokeWidth="6" />
                   <circle cx="560" cy="275" r="22" fill="#334155" />
 
-                  {/* Road Shadow Underglow */}
                   <ellipse cx="400" cy="320" rx="350" ry="14" fill={activeColor.hex} opacity="0.6" />
                 </svg>
               </div>
@@ -187,7 +198,7 @@ export function Configurator() {
               </div>
             </div>
 
-            {/* Battery Rental Option */}
+            {/* Battery Option */}
             <div className="space-y-3">
               <label className="text-xs font-black text-slate-300 uppercase tracking-wider">Hình thức Bộ Pin</label>
               <div className="grid grid-cols-2 gap-3">
