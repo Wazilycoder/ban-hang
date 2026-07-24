@@ -118,13 +118,11 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     officialUrl: 'https://apple.com',
     colors: [
       { name: 'Titan Sa Mạc', hex: '#C7B299', imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Titan Tự Nhiên', hex: '#8E8D8A', imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Titan Đen', hex: '#28282B', imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80' }
+      { name: 'Titan Tự Nhiên', hex: '#8E8D8A', imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
       { capacity: '128GB', price: 28990000, oldPrice: 29990000 },
-      { capacity: '256GB', price: 31990000, oldPrice: 33990000 },
-      { capacity: '512GB', price: 37990000, oldPrice: 39990000 }
+      { capacity: '256GB', price: 31990000, oldPrice: 33990000 }
     ],
     features: ['Camera Tele Zoom Quang 5x', 'Màn Hình 6.3" Viền Mỏng', 'Phím Action Button Cảm Ứng Lực', 'Wifi 7 Tốc Độ Siêu Nhanh'],
     isHot: true
@@ -171,17 +169,15 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     discountTag: 'Giảm 1.000.000đ',
     giftDesc: 'Ưu đãi sinh viên giảm 500k + Trả góp 0%',
     description: 'Màu sắc trẻ trung nổi bật: Xanh Lưu Ly, Hồng Ngọc và Xanh Đại Dương. Hỗ trợ quay video Spatial Video.',
-    imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://apple.com',
     colors: [
-      { name: 'Xanh Lưu Ly (Teal)', hex: '#008080', imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Hồng Ngọc (Pink)', hex: '#E0A96D', imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Đen Mờ (Black)', hex: '#1C1C1E', imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80' }
+      { name: 'Xanh Lưu Ly (Teal)', hex: '#008080', imageUrl: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=1200&q=80' },
+      { name: 'Hồng Ngọc (Pink)', hex: '#E0A96D', imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
       { capacity: '128GB', price: 22990000, oldPrice: 23990000 },
-      { capacity: '256GB', price: 25990000, oldPrice: 26990000 },
-      { capacity: '512GB', price: 31990000, oldPrice: 32990000 }
+      { capacity: '256GB', price: 25990000, oldPrice: 26990000 }
     ],
     features: ['Dynamic Island Đa Năng', 'Camera 48MP Fusion 2 trong 1', 'Phím Camera Control Cảm Ứng Lực', 'Mặt Kính Ceramic Shield Thế Hệ Mới']
   },
@@ -231,7 +227,6 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     officialUrl: 'https://apple.com',
     colors: [
       { name: 'Đen Midnight', hex: '#1C1C1E', imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Trắng Starlight', hex: '#F5F5F7', imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80' },
       { name: 'Hồng Pink', hex: '#E0A96D', imageUrl: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
@@ -241,7 +236,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     features: ['Chipset Apple A15 Bionic Mượt Mà', 'Camera Chống Rung Sensor-Shift', 'Màn Hình Super Retina XDR Sắc Nét', 'Thời Lượng Pin Bền Bỉ']
   },
 
-  // --- 🌌 SAMSUNG GALAXY SERIES ---
+  // --- 🌌 SAMSUNG GALAXY SERIES (ĐÚNG ẢNH ĐIỆN THOẠI SAMSUNG GALAXY) ---
   {
     id: 'galaxy-s25-ultra',
     name: 'Samsung Galaxy S25 Ultra 5G 256GB',
@@ -261,13 +256,11 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     officialUrl: 'https://samsung.com',
     colors: [
       { name: 'Xám Titan (Titanium Gray)', hex: '#4A4B4D', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Đen Titan (Titanium Black)', hex: '#1F2022', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Xanh Titan (Titanium Blue)', hex: '#2B3E50', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' }
+      { name: 'Đen Titan (Titanium Black)', hex: '#1F2022', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
       { capacity: '256GB', price: 33990000, oldPrice: 35990000 },
-      { capacity: '512GB', price: 37990000, oldPrice: 39990000 },
-      { capacity: '1TB', price: 44990000, oldPrice: 47990000 }
+      { capacity: '512GB', price: 37990000, oldPrice: 39990000 }
     ],
     features: ['Camera 200MP Zoom 100x Đêm', 'Galaxy AI Thông Dịch Trực Tiếp', 'Bút S Pen Thông Minh', 'Khung Titan Cực Siêu Bền'],
     isHot: true,
@@ -291,8 +284,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://samsung.com',
     colors: [
-      { name: 'Xám Titan', hex: '#4A4B4D', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Xanh Navy', hex: '#1E293B', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' }
+      { name: 'Xám Titan', hex: '#4A4B4D', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
       { capacity: '256GB', price: 26990000, oldPrice: 28990000 },
@@ -373,8 +365,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://samsung.com',
     colors: [
-      { name: 'Xanh Xăng (Iceblue)', hex: '#93C5FD', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Tím Lilac', hex: '#C084FC', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' }
+      { name: 'Xanh Xăng (Iceblue)', hex: '#93C5FD', imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
       { capacity: '128GB', price: 9990000, oldPrice: 10990000 },
@@ -383,7 +374,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     features: ['Khung Kim Loại Sang Trọng', 'Kháng Nước Chống Bụi IP67', 'Pin 5000 mAh Sử Dụng 2 Ngày', 'Bảo Mật Knox Vault Đẳng Cấp']
   },
 
-  // --- 🔴 XIAOMI, OPPO, VIVO & GAMING PHONE ---
+  // --- 🔴 XIAOMI, POCO, OPPO, VIVO, SONY & GAMING PHONES (ĐÚNG ẢNH TỪNG THƯƠNG HIỆU) ---
   {
     id: 'xiaomi-15-ultra',
     name: 'Xiaomi 15 Ultra 5G 512GB',
@@ -411,6 +402,31 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     ],
     features: ['Ống Kính Leica Huyền Thoại', 'Camera Periscope 200MP', 'Sạc Nhanh 90W HyperCharge', 'Mặt Lưng Gốm / Da Đẳng Cấp'],
     isHot: true
+  },
+  {
+    id: 'xiaomi-14t-pro',
+    name: 'Xiaomi 14T Pro 5G Leica 512GB',
+    brand: 'Xiaomi',
+    tagline: 'Màn hình 144Hz Leica Summilux, Chip Dimensity 9300+, Sạc 120W',
+    category: 'Android Flagship',
+    screen: 'AMOLED 6.67" 1.5K 144Hz AI Eye-care 4000 nits',
+    chipset: 'MediaTek Dimensity 9300+ 4nm',
+    ram: '12 GB',
+    camera: 'Triple Leica 50MP Summilux & Tele 50MP & Ultrawide 12MP',
+    battery: '5.000 mAh, Sạc siêu tốc 120W HyperCharge',
+    tradeInBonus: 2500000,
+    discountTag: 'Giảm 1.500.000đ',
+    giftDesc: 'Tặng củ sạc 120W + Bảo hành 24 tháng chính hãng',
+    description: 'Chụp ảnh chuẩn sắc màu Leica Summilux. Màn hình 144Hz siêu mượt cùng công nghệ sạc 120W đầy pin chỉ trong 19 phút.',
+    imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80',
+    officialUrl: 'https://mi.com',
+    colors: [
+      { name: 'Xám Titan (Titan Gray)', hex: '#64748B', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' }
+    ],
+    storages: [
+      { capacity: '512GB', price: 16990000, oldPrice: 18490000 }
+    ],
+    features: ['Ống Kính Leica Summilux', 'Sạc Siêu Tốc 120W 19 Phút', 'Màn Hình 144Hz Tối Ưu Chơi Game', 'Chuẩn Kháng Nước Bụi IP68']
   },
   {
     id: 'rog-phone-9-pro',
@@ -456,8 +472,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://oppo.com',
     colors: [
-      { name: 'Trắng Ngọc Trai (Pearl White)', hex: '#F4F4F5', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Đen Thạch Anh (Space Black)', hex: '#18181B', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' }
+      { name: 'Trắng Ngọc Trai (Pearl White)', hex: '#F4F4F5', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
       { capacity: '512GB', price: 28990000, oldPrice: 30990000 }
@@ -482,8 +497,7 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://vivo.com',
     colors: [
-      { name: 'Xanh Titan (Titanium Blue)', hex: '#2B3E50', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Đen Carbon', hex: '#18181B', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' }
+      { name: 'Xanh Titan (Titanium Blue)', hex: '#2B3E50', imageUrl: 'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
       { capacity: '512GB', price: 29990000, oldPrice: 31990000 }
@@ -508,14 +522,37 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://store.google.com',
     colors: [
-      { name: 'Hazel (Xám Rêu)', hex: '#5B685D', imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Obsidian (Đen Đá)', hex: '#1A1A1A', imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80' }
+      { name: 'Hazel (Xám Rêu)', hex: '#5B685D', imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
-      { capacity: '256GB', price: 27990000, oldPrice: 29990000 },
-      { capacity: '512GB', price: 32990000, oldPrice: 34990000 }
+      { capacity: '256GB', price: 27990000, oldPrice: 29990000 }
     ],
     features: ['Mô Hình AI Google Gemini Trực Tiếp', 'Cập Nhật Android Liên Tục 7 Năm', 'Camera Chụp Ảnh Đêm Best Take', 'Màn Hình Super Actua 3000 nits']
+  },
+  {
+    id: 'sony-xperia-1-vi',
+    name: 'Sony Xperia 1 VI Zeiss 4K 256GB',
+    brand: 'Sony',
+    tagline: 'Màn hình OLED BRAVIA 4K HDR, Cam Zoom quang học 85-170mm',
+    category: 'Android Flagship',
+    screen: 'OLED 6.5" FHD+ 120Hz Powered by BRAVIA HDR 10-bit',
+    chipset: 'Snapdragon 8 Gen 3 4nm',
+    ram: '12 GB',
+    camera: 'Zeiss T* 48MP Exmor T & Tele Zoom Quang Liên Tục 85-170mm',
+    battery: '5.000 mAh, Âm thanh Hi-Res Audio 3.5mm jack',
+    tradeInBonus: 3500000,
+    discountTag: 'Giảm 2.000.000đ',
+    giftDesc: 'Tặng tai nghe Sony WH-1000XM5 chống ồn',
+    description: 'Chiếc điện thoại duy nhất thế giới sở hữu ống kính Tele Zoom quang học biến thiên liên tục 85mm-170mm chuẩn máy ảnh Alpha.',
+    imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
+    officialUrl: 'https://sony.com',
+    colors: [
+      { name: 'Xanh Rêu (Khaki Green)', hex: '#3B483A', imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80' }
+    ],
+    storages: [
+      { capacity: '256GB', price: 32990000, oldPrice: 34990000 }
+    ],
+    features: ['Zoom Quang Liên Tục 85-170mm', 'Âm Thanh Chuẩn Hi-Res Jack 3.5mm', 'Màn Hình Công Nghệ BRAVIA OLED', 'Lớp Phủ Ống Kính Zeiss T*']
   },
 
   // --- 📱 TABLETS & PHỤ KIỆN ---
@@ -537,13 +574,10 @@ export const PHONE_PRODUCTS: PhoneProduct[] = [
     imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://apple.com',
     colors: [
-      { name: 'Đen Thần Không (Space Black)', hex: '#1D1D1F', imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80' },
-      { name: 'Bạc Khí Chất (Silver)', hex: '#E3E4E6', imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80' }
+      { name: 'Đen Thần Không (Space Black)', hex: '#1D1D1F', imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80' }
     ],
     storages: [
-      { capacity: '256GB', price: 37990000, oldPrice: 39990000 },
-      { capacity: '512GB', price: 43990000, oldPrice: 45990000 },
-      { capacity: '1TB', price: 55990000, oldPrice: 57990000 }
+      { capacity: '256GB', price: 37990000, oldPrice: 39990000 }
     ],
     features: ['Màn Hình Tandem OLED Rực Rỡ', 'Chip Apple M4 Đồ Họa Ray Tracing', 'Thiết Kế Siêu Mỏng 5.1mm', 'Cổng Kết Nối Thunderbolt 4']
   }
