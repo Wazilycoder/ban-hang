@@ -26,7 +26,7 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="relative pt-36 pb-20 px-4 sm:px-6 bg-[#030712] overflow-hidden font-sans">
+    <section id="hero" className="relative pt-44 sm:pt-48 pb-20 px-4 sm:px-6 bg-[#030712] overflow-hidden font-sans">
       
       {/* Liquid Ambient Glowing Orbs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[550px] bg-cyan-600/20 blur-[240px] rounded-full pointer-events-none animate-liquid-glow" />
@@ -41,7 +41,7 @@ export function Hero() {
           <div className="lg:col-span-5 space-y-6 text-left animate-fade-in">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full liquid-glass text-xs font-black text-cyan-300 uppercase tracking-widest shadow-xl">
               <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-              ĐỐI TÁC CHÍNH HÃNG THẾ GIỚI DI ĐỘNG
+              ĐỒ ÁN E-COMMERCE 2026
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight uppercase leading-[1.1]">
@@ -52,7 +52,7 @@ export function Hero() {
             </h1>
 
             <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed max-w-xl">
-              Khám phá iPhone 16 Pro Max Titan Sa Mạc & Samsung Galaxy S25 Ultra 5G giá ưu đãi Thế Giới Di Động. Đổi cũ trợ giá tới 6 triệu, trả góp 0% và giao nhanh 1 giờ.
+              Khám phá iPhone 16 Pro Max Titan Sa Mạc & Samsung Galaxy S25 Ultra 5G. Thu cũ trợ giá tới 5 triệu, trả góp 0% và giao hàng demo siêu tốc.
             </p>
 
             {/* CTAs */}
@@ -69,7 +69,7 @@ export function Hero() {
                 className="liquid-card px-6 py-4 rounded-2xl text-xs sm:text-sm font-black text-amber-300 uppercase tracking-wider flex items-center gap-2 group cursor-pointer hover:border-amber-400/50"
               >
                 <RefreshCw className="w-4 h-4 text-amber-400 group-hover:rotate-180 transition-transform duration-500" />
-                THU CŨ TRỢ GIÁ 6TR
+                THU CŨ TRỢ GIÁ 5TR
               </a>
             </div>
           </div>
@@ -91,7 +91,7 @@ export function Hero() {
                 {/* Left Bottom Label */}
                 <div className="absolute bottom-5 left-6 liquid-glass px-5 py-3 rounded-2xl text-left shadow-2xl">
                   <span className="text-[10px] text-cyan-400 font-black uppercase tracking-widest block flex items-center gap-1">
-                    <Flame className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-bounce" /> TOP BÁN CHẠY THẾ GIỚI DI ĐỘNG
+                    <Flame className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-bounce" /> SIÊU PHẨM BÁN CHẠY
                   </span>
                   <h3 className="text-xl font-black text-white">iPhone 16 Pro Max 256GB</h3>
                   <div className="flex items-center gap-2 mt-0.5">
@@ -111,16 +111,6 @@ export function Hero() {
                       <span className="text-xs font-black text-white block">BH 1 đổi 1 12 tháng</span>
                     </div>
                   </div>
-
-                  <div className="flex items-center gap-3 liquid-glass p-3 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-400 to-yellow-500 text-slate-950 font-black text-base flex items-center justify-center shadow-inner">
-                      ⚡
-                    </div>
-                    <div className="text-left pr-2">
-                      <span className="text-[10px] text-amber-300 font-bold block uppercase tracking-wider">TGDD EXPRESS</span>
-                      <span className="text-xs font-black text-white block">Giao nhanh 1 giờ</span>
-                    </div>
-                  </div>
                 </div>
 
               </div>
@@ -130,13 +120,13 @@ export function Hero() {
 
         </div>
 
-        {/* Section: TOP ĐIỆN THOẠI BÁN CHẠY NHẤT THẾ GIỚI DI ĐỘNG */}
+        {/* Section: TOP ĐIỆN THOẠI BÁN CHẠY NHẤT */}
         <div className="pt-12 space-y-6">
           
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h2 className="text-2xl sm:text-3xl font-black text-white tracking-wide uppercase">
-                TOP ĐIỆN THOẠI BÁN CHẠY NHẤT THẾ GIỚI DI ĐỘNG
+                TOP ĐIỆN THOẠI BÁN CHẠY NHẤT 2026
               </h2>
               <p className="text-xs text-slate-400 mt-1">Hàng VN/A chính hãng 100% nguyên seal chưa active</p>
             </div>
@@ -241,21 +231,13 @@ export function Hero() {
                   </div>
                 </div>
 
-                {/* TGDD Specs summary */}
+                {/* Specs summary */}
                 <div className="grid grid-cols-2 gap-2 text-[11px] bg-slate-950/80 p-3 rounded-xl border border-white/5 text-slate-300">
                   <div>Màn: <strong className="text-white">{phone.screen.split(' ')[0]}</strong></div>
                   <div>Chip: <strong className="text-cyan-400">{phone.chipset.split(' ')[0]}</strong></div>
                   <div>RAM: <strong className="text-white">{phone.ram}</strong></div>
                   <div>Pin: <strong className="text-emerald-400">{phone.battery.split(',')[0]}</strong></div>
                 </div>
-
-                {/* TGDD Gift Box tag if available */}
-                {phone.giftDesc && (
-                  <div className="flex items-center gap-2 p-2 rounded-xl bg-amber-950/30 border border-amber-500/20 text-[11px] text-amber-300 font-bold">
-                    <Gift className="w-4 h-4 text-amber-400 shrink-0" />
-                    <span className="line-clamp-1">{phone.giftDesc}</span>
-                  </div>
-                )}
 
                 {/* Price tag */}
                 <div className="flex items-baseline justify-between pt-1">
