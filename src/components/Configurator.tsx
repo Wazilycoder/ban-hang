@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { PHONE_PRODUCTS, PhoneProduct } from '@/data/phones';
-import { Smartphone, ShieldCheck, Zap, Palette, HardDrive, CheckCircle2, ShoppingCart, Tag, Rotate3D } from 'lucide-react';
+import { Smartphone, ShieldCheck, Zap, Palette, HardDrive, CheckCircle2, ShoppingCart, Tag, Rotate3D, Gift } from 'lucide-react';
 
 export function Configurator() {
   const [selectedBrand, setSelectedBrand] = useState<'All' | 'Apple' | 'Samsung' | 'Android'>('All');
@@ -37,19 +37,19 @@ export function Configurator() {
     return () => clearInterval(interval);
   }, [is360Mode]);
 
-  // Price calculations
-  const basePriceVnd = activeStorage.price * 1000000;
-  const oldPriceVnd = activeStorage.oldPrice ? activeStorage.oldPrice * 1000000 : basePriceVnd + 2000000;
+  // Price calculations in VNĐ
+  const basePriceVnd = activeStorage.price;
+  const oldPriceVnd = activeStorage.oldPrice || basePriceVnd + 2000000;
   const vipWarrantyFee = vipWarranty ? 1500000 : 0;
   const accessoryFee = includeAccessory ? 850000 : 0;
   const grandTotal = basePriceVnd + vipWarrantyFee + accessoryFee;
 
   return (
-    <section id="configurator" className="py-24 px-4 sm:px-6 relative overflow-hidden bg-[#070d1a] font-sans">
+    <section id="configurator" className="py-24 px-4 sm:px-6 relative overflow-hidden bg-[#030712] font-sans">
       
-      {/* Dynamic Background Glow Based on Color */}
+      {/* Liquid Glass Background Aura */}
       <div
-        className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[700px] h-[700px] opacity-20 blur-[200px] pointer-events-none transition-colors duration-1000"
+        className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[750px] h-[750px] opacity-20 blur-[240px] pointer-events-none transition-colors duration-1000 animate-liquid-glow"
         style={{ backgroundColor: activeColor.hex }}
       />
 
@@ -57,14 +57,14 @@ export function Configurator() {
         
         {/* Header */}
         <div className="text-center space-y-3">
-          <span className="px-4 py-1.5 rounded-full text-xs font-black text-cyan-400 bg-cyan-950/80 border border-cyan-500/30 uppercase tracking-widest inline-block">
-            TÙY CHỈNH CẤU HÌNH & TRẢI NGHIỆM 360°
+          <span className="px-4 py-1.5 rounded-full text-xs font-black text-cyan-400 liquid-glass uppercase tracking-widest inline-block">
+            TRẢI NGHIỆM 360° & TÙY CHỈNH CẤU HÌNH THẾ GIỚI DI ĐỘNG
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
-            BẢNG GIÁ & CẤU HÌNH FLAGSHIP CHI TIẾT
+            BẢNG GIÁ & CẤU HÌNH CHI TIẾT
           </h2>
           <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-            Lựa chọn phiên bản dung lượng bộ nhớ, màu sắc độc quyền Titan, gói bảo hành VIP và nhận ưu đãi trợ giá thu cũ đổi mới.
+            Xem hình ảnh xoay 360° thực tế, chọn dung lượng bộ nhớ, màu sơn Titan độc quyền và kiểm tra các ưu đãi giảm giá tại TGDD.
           </p>
         </div>
 
@@ -79,11 +79,11 @@ export function Configurator() {
             }}
             className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
               selectedBrand === 'All'
-                ? 'bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-500/30 ring-2 ring-cyan-400/50'
-                : 'bg-slate-900 text-slate-400 hover:text-white border border-white/10'
+                ? 'liquid-button text-slate-950 ring-2 ring-cyan-400/50'
+                : 'liquid-card text-slate-400 hover:text-white'
             }`}
           >
-            🔥 Tất Cả Siêu Phẩm ({PHONE_PRODUCTS.length})
+            🔥 Tất Cả Điện Thoại ({PHONE_PRODUCTS.length})
           </button>
 
           <button
@@ -96,11 +96,11 @@ export function Configurator() {
             }}
             className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
               selectedBrand === 'Apple'
-                ? 'bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-500/30 ring-2 ring-cyan-400/50'
-                : 'bg-slate-900 text-slate-400 hover:text-white border border-white/10'
+                ? 'liquid-button text-slate-950 ring-2 ring-cyan-400/50'
+                : 'liquid-card text-slate-400 hover:text-white'
             }`}
           >
-             Apple iPhone ({PHONE_PRODUCTS.filter(p => p.brand === 'Apple').length})
+             Apple iPhone VN/A
           </button>
 
           <button
@@ -113,16 +113,16 @@ export function Configurator() {
             }}
             className={`px-6 py-3 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
               selectedBrand === 'Samsung'
-                ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/30 ring-2 ring-amber-400/50'
-                : 'bg-slate-900 text-slate-400 hover:text-white border border-white/10'
+                ? 'bg-amber-500 text-slate-950 shadow-lg ring-2 ring-amber-400/50'
+                : 'liquid-card text-slate-400 hover:text-white'
             }`}
           >
-            🌌 Samsung Galaxy ({PHONE_PRODUCTS.filter(p => p.brand === 'Samsung').length})
+            🌌 Samsung Galaxy
           </button>
         </div>
 
         {/* Product Track Selector */}
-        <div className="relative p-2 rounded-2xl bg-slate-900/80 border border-white/10 max-w-5xl mx-auto flex items-center justify-between overflow-x-auto no-scrollbar shadow-2xl">
+        <div className="relative p-2 rounded-2xl liquid-glass max-w-5xl mx-auto flex items-center justify-between overflow-x-auto no-scrollbar shadow-2xl">
           {filteredProducts.map((phone) => {
             const isSelected = activeProduct.id === phone.id;
             return (
@@ -135,7 +135,7 @@ export function Configurator() {
                 }}
                 className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-black transition-all text-center whitespace-nowrap z-10 cursor-pointer ${
                   isSelected
-                    ? 'bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-md scale-105'
+                    ? 'liquid-button text-slate-950 scale-105'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
@@ -150,7 +150,7 @@ export function Configurator() {
           
           {/* Left 6 Cols: Phone Visual Display Screen */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="relative bg-slate-900/90 rounded-3xl p-6 border border-white/15 shadow-2xl min-h-[460px] flex flex-col items-center justify-center">
+            <div className="relative liquid-glass rounded-3xl p-6 shadow-2xl min-h-[460px] flex flex-col items-center justify-center">
               
               {/* Top Controls: 360 Rotation Toggle */}
               <div className="absolute top-5 left-5 z-20">
@@ -158,8 +158,8 @@ export function Configurator() {
                   onClick={() => setIs360Mode(!is360Mode)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
                     is360Mode
-                      ? 'bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-400/30'
-                      : 'bg-slate-950/80 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-950'
+                      ? 'liquid-button text-slate-950'
+                      : 'liquid-card text-cyan-400 hover:bg-cyan-950'
                   }`}
                 >
                   <Rotate3D className={`w-4 h-4 ${is360Mode ? 'animate-spin' : ''}`} />
@@ -168,7 +168,7 @@ export function Configurator() {
               </div>
 
               {/* Display Frame */}
-              <div className="w-full h-[340px] sm:h-[400px] relative z-10 flex items-center justify-center p-4 bg-slate-950 rounded-2xl border border-white/5">
+              <div className="w-full h-[340px] sm:h-[400px] relative z-10 flex items-center justify-center p-4 bg-slate-950/80 rounded-2xl border border-white/5">
                 <img
                   src={activeColor.imageUrl || activeProduct.imageUrl}
                   alt={activeProduct.name}
@@ -205,13 +205,13 @@ export function Configurator() {
             </div>
 
             {/* Color Swatch Switcher */}
-            <div className="bg-slate-900/80 p-6 rounded-3xl space-y-4 border border-white/15">
+            <div className="liquid-card p-6 rounded-3xl space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
                   <Palette className="w-4 h-4 text-cyan-400" />
                   Màu Sắc Độc Quyền: <span className="text-cyan-400">{activeColor.name}</span>
                 </span>
-                <span className="text-[11px] text-slate-400">{activeProduct.colors.length} Tùy chọn màu sắc</span>
+                <span className="text-[11px] text-slate-400">{activeProduct.colors.length} Tùy chọn màu</span>
               </div>
               <div className="flex items-center gap-4 flex-wrap">
                 {activeProduct.colors.map((color, idx) => (
@@ -234,11 +234,18 @@ export function Configurator() {
           </div>
 
           {/* Right 6 Cols: Storage, Warranty & Price Output */}
-          <div className="lg:col-span-6 bg-slate-900/90 p-8 rounded-3xl space-y-7 border border-white/15 shadow-2xl">
+          <div className="lg:col-span-6 liquid-glass p-8 rounded-3xl space-y-7 shadow-2xl">
             <div>
-              <span className="text-xs text-cyan-400 font-black uppercase tracking-widest">
-                CHÍNH HÃNG VN/A • {activeProduct.brand}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-cyan-400 font-black uppercase tracking-widest">
+                  CHÍNH HÃNG VN/A • {activeProduct.brand}
+                </span>
+                {activeProduct.discountTag && (
+                  <span className="px-2 py-0.5 rounded-full bg-red-600 text-white font-black text-[9px] uppercase">
+                    {activeProduct.discountTag}
+                  </span>
+                )}
+              </div>
               <h3 className="text-3xl font-black text-white mt-1">{activeProduct.name}</h3>
               <p className="text-xs text-slate-300 mt-2 leading-relaxed">{activeProduct.description}</p>
             </div>
@@ -260,7 +267,7 @@ export function Configurator() {
                     }`}
                   >
                     <div className="text-sm font-extrabold">{storage.capacity}</div>
-                    <div className="text-[11px] text-amber-400 mt-1">{storage.price.toLocaleString('vi-VN')} Trđ</div>
+                    <div className="text-[11px] text-amber-400 mt-1">{storage.price.toLocaleString('vi-VN')} đ</div>
                   </button>
                 ))}
               </div>
@@ -269,7 +276,7 @@ export function Configurator() {
             {/* VIP Care Warranty Option */}
             <div className="space-y-3">
               <label className="text-xs font-black text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" /> Gói Bảo Hành VIP Care Mở Rộng
+                <ShieldCheck className="w-4 h-4 text-emerald-400" /> Gói Bảo Hành Mở Rộng Thế Giới Di Động
               </label>
               <div className="grid grid-cols-2 gap-3">
                 <button
@@ -299,10 +306,10 @@ export function Configurator() {
             </div>
 
             {/* Accessory Bundle Checkbox */}
-            <div className="p-4 rounded-2xl bg-slate-950 border border-white/10 flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-slate-950/90 border border-white/10 flex items-center justify-between">
               <div className="space-y-0.5">
-                <span className="text-xs font-black text-white block">Combo Phụ Kiện Chính Hãng (Củ sạc 45W + Ốp Magsafe)</span>
-                <span className="text-[11px] text-slate-400 block">Ưu đãi giảm 40% khi mua kèm điện thoại mới</span>
+                <span className="text-xs font-black text-white block">Combo Củ Sạc Nhanh 25W/45W + Ốp Chống Sốc</span>
+                <span className="text-[11px] text-slate-400 block">Ưu đãi mua kèm điện thoại giảm ngay 40%</span>
               </div>
               <input
                 type="checkbox"
@@ -316,7 +323,7 @@ export function Configurator() {
             <div className="pt-4 border-t border-white/10 space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-slate-400 font-bold uppercase">Tổng tiền thanh toán dự kiến</span>
+                  <span className="text-xs text-slate-400 font-bold uppercase">Tổng tiền thanh toán tại TGDD</span>
                   <div className="flex items-baseline gap-2 mt-0.5">
                     <div className="text-3xl font-black text-amber-400">
                       {grandTotal.toLocaleString('vi-VN')} <span className="text-sm font-normal text-slate-300">đ</span>
@@ -329,7 +336,7 @@ export function Configurator() {
 
                 <a
                   href="#store-order"
-                  className="px-6 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-xl flex items-center gap-2 cursor-pointer"
+                  className="liquid-button px-6 py-4 rounded-2xl text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-xl flex items-center gap-2 cursor-pointer"
                 >
                   <ShoppingCart className="w-4 h-4" />
                   ĐẶT MUA NGAY
@@ -337,8 +344,8 @@ export function Configurator() {
               </div>
 
               <div className="text-[11px] text-slate-400 flex items-center justify-between border-t border-white/5 pt-2">
-                <span>✓ Giá đã bao gồm VAT 10%</span>
-                <span>Trợ giá thu cũ tối đa <strong>{activeProduct.tradeInBonus} Triệu</strong></span>
+                <span>✓ Đã bao gồm VAT 10%</span>
+                <span>Trợ giá thu cũ tối đa <strong>{(activeProduct.tradeInBonus / 1000000).toLocaleString('vi-VN')} Triệu</strong></span>
               </div>
             </div>
 

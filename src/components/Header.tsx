@@ -19,12 +19,12 @@ import {
   Percent,
   Flame,
   Gamepad2,
-  Tablet
+  Tag
 } from 'lucide-react';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<'iphone' | 'samsung' | 'gaming' | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<'iphone' | 'samsung' | 'tablet' | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -37,7 +37,7 @@ export function Header() {
 
   const iphoneProducts = PHONE_PRODUCTS.filter(p => p.brand === 'Apple');
   const samsungProducts = PHONE_PRODUCTS.filter(p => p.brand === 'Samsung');
-  const gamingProducts = PHONE_PRODUCTS.filter(p => p.category === 'Gaming Phone' || p.brand === 'ASUS' || p.brand === 'Xiaomi');
+  const tabletProducts = PHONE_PRODUCTS.filter(p => p.category === 'Tablet & Phụ Kiện' || p.category === 'Android Flagship');
 
   const filteredSearchResults = searchQuery.trim()
     ? PHONE_PRODUCTS.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.tagline.toLowerCase().includes(searchQuery.toLowerCase()) || p.brand.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -45,43 +45,43 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 font-sans">
-      {/* Top Banner Announcement Ticker */}
-      <div className="bg-gradient-to-r from-[#060c18] via-[#0e1c38] to-[#060c18] border-b border-cyan-500/20 text-slate-300 text-xs py-2 px-4 hidden md:block">
+      {/* Top Banner TGDD Promos & Hotlines */}
+      <div className="bg-gradient-to-r from-[#030712] via-[#09152e] to-[#030712] border-b border-cyan-500/20 text-slate-300 text-xs py-2 px-4 hidden md:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-amber-400 font-bold animate-pulse">
+            <span className="flex items-center gap-1.5 text-amber-300 font-bold animate-pulse">
               <Flame className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              HOT: Thu cũ đổi mới trợ giá lên tới 6.000.000đ
+              TGDD ƯU ĐÃI: Thu cũ đổi mới trợ giá tới 6.000.000đ
             </span>
             <span className="flex items-center gap-1.5 text-cyan-300 font-medium">
               <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
-              Bảo hành 1 đổi 1 12 tháng chính hãng VN/A
+              Bảo hành chính hãng VN/A 1 đổi 1 12 tháng
             </span>
             <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
               <Zap className="w-3.5 h-3.5 text-emerald-400" />
-              Giao hỏa tốc nội thành trong 1 giờ
+              Giao siêu tốc trong 1 giờ
             </span>
           </div>
 
           <div className="flex items-center gap-5 text-slate-400 text-[11px]">
-            <a href="tel:18006868" className="flex items-center gap-1 hover:text-white transition-colors">
+            <a href="tel:18001060" className="flex items-center gap-1 hover:text-white transition-colors">
               <PhoneCall className="w-3 h-3 text-cyan-400" />
-              Tổng đài tư vấn: <strong className="text-white font-bold">1800 6868 (Miễn phí)</strong>
+              Tổng đài TGDD: <strong className="text-white font-bold">1800 1060 (Miễn phí)</strong>
             </a>
             <a href="#store-order" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
               <MapPin className="w-3 h-3 text-amber-400" />
-              Hệ thống 45 Cửa Hàng Toàn Quốc
+              Hệ thống Siêu thị Toàn Quốc
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
+      {/* Main Navigation Bar (Liquid Glass Style) */}
       <div 
         className={`transition-all duration-500 ${
           scrolled 
-            ? 'bg-[#081024]/95 backdrop-blur-2xl border-b border-cyan-500/30 shadow-2xl py-3' 
-            : 'bg-[#0b1429]/80 backdrop-blur-xl border-b border-white/10 py-4'
+            ? 'liquid-glass py-3 border-b border-cyan-500/30' 
+            : 'bg-[#081024]/80 backdrop-blur-xl border-b border-white/10 py-4'
         }`}
         onMouseLeave={() => setActiveDropdown(null)}
       >
@@ -97,15 +97,16 @@ export function Header() {
 
           {/* Brand Logo Emblem */}
           <a href="#" className="flex items-center gap-3 group cursor-pointer">
-            <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 border border-cyan-400/50 flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:scale-110 group-hover:shadow-cyan-400/50 transition-all duration-300">
-              <Smartphone className="w-6 h-6 text-white transform group-hover:rotate-12 transition-transform duration-300" />
+            <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 border border-cyan-300/40 flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:scale-110 group-hover:shadow-cyan-400/50 transition-all duration-300">
+              <Smartphone className="w-6 h-6 text-slate-950 transform group-hover:rotate-12 transition-transform duration-300" />
+              <div className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             <div>
               <span className="text-xl font-black tracking-widest text-white block uppercase group-hover:text-cyan-400 transition-colors">
-                PHONE<span className="text-cyan-400">HUB</span>
+                PHONE<span className="liquid-text-gradient">HUB</span>
               </span>
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest block -mt-1">
-                FLAGSHIP STORE VN/A
+              <span className="text-[10px] text-cyan-400 font-extrabold uppercase tracking-widest block -mt-1">
+                ĐỐI TÁC THẾ GIỚI DI ĐỘNG
               </span>
             </div>
           </a>
@@ -118,7 +119,7 @@ export function Header() {
               onMouseEnter={() => setActiveDropdown('iphone')}
             >
               <button className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
-                 iPhone
+                 iPhone VN/A
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${activeDropdown === 'iphone' ? 'rotate-180 text-cyan-400' : ''}`} />
               </button>
             </div>
@@ -134,20 +135,19 @@ export function Header() {
               </button>
             </div>
 
-            {/* Gaming & Android */}
+            {/* Tablet & Android */}
             <div 
               className="relative py-2 group cursor-pointer"
-              onMouseEnter={() => setActiveDropdown('gaming')}
+              onMouseEnter={() => setActiveDropdown('tablet')}
             >
               <button className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
-                <Gamepad2 className="w-4 h-4 text-purple-400" />
-                Gaming & Android
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${activeDropdown === 'gaming' ? 'rotate-180 text-cyan-400' : ''}`} />
+                Tablet & Android
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${activeDropdown === 'tablet' ? 'rotate-180 text-cyan-400' : ''}`} />
               </button>
             </div>
 
-            <a href="#trade-in" className="hover:text-cyan-400 transition-colors py-2 flex items-center gap-1 text-amber-400">
-              <RefreshCw className="w-3.5 h-3.5 animate-spin-slow" /> Thu Cũ Trợ Giá 6Tr
+            <a href="#trade-in" className="hover:text-cyan-400 transition-colors py-2 flex items-center gap-1 text-amber-300">
+              <RefreshCw className="w-3.5 h-3.5 text-amber-400" /> Thu Cũ Trợ Giá 6Tr
             </a>
 
             <a href="#installment" className="hover:text-cyan-400 transition-colors py-2 flex items-center gap-1">
@@ -159,13 +159,13 @@ export function Header() {
           <div className="hidden md:flex items-center gap-4 text-slate-300">
             <button 
               onClick={() => setSearchOpen(!searchOpen)} 
-              className="hover:text-cyan-400 transition-all p-2 rounded-xl bg-slate-900/90 border border-white/15 hover:border-cyan-400/60 cursor-pointer flex items-center gap-2 text-xs font-bold text-slate-300 shadow-md hover:scale-105"
+              className="hover:text-cyan-400 transition-all p-2 rounded-2xl liquid-card cursor-pointer flex items-center gap-2 text-xs font-bold text-slate-300 shadow-md hover:scale-105"
             >
               <Search className="w-4 h-4 text-cyan-400" />
-              <span>Tìm siêu phẩm...</span>
+              <span>Tìm điện thoại...</span>
             </button>
 
-            <a href="#store-order" className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-500 hover:from-cyan-300 hover:to-blue-400 px-5 py-2.5 rounded-xl text-slate-950 text-xs font-black transition-all duration-300 shadow-lg shadow-cyan-500/20 transform hover:-translate-y-0.5 cursor-pointer uppercase tracking-wider">
+            <a href="#store-order" className="liquid-button px-5 py-2.5 rounded-2xl text-slate-950 text-xs font-black transition-all shadow-lg shadow-cyan-500/20 transform hover:-translate-y-0.5 cursor-pointer uppercase tracking-wider flex items-center gap-2">
               <ShoppingBag className="w-4 h-4" />
               <span>Giỏ Hàng (0)</span>
             </a>
@@ -175,7 +175,7 @@ export function Header() {
           <div className="flex md:hidden items-center gap-2">
             <a 
               href="#configurator" 
-              className="px-3.5 py-1.5 rounded-xl bg-cyan-400 text-slate-950 font-black text-xs uppercase shadow-md"
+              className="liquid-button px-3.5 py-1.5 rounded-xl text-slate-950 font-black text-xs uppercase shadow-md"
             >
               Mua Ngay
             </a>
@@ -185,37 +185,37 @@ export function Header() {
 
         {/* Mega Dropdown iPhone */}
         {activeDropdown === 'iphone' && (
-          <div className="absolute top-full left-0 right-0 bg-[#071026]/98 backdrop-blur-3xl border-b border-cyan-500/40 shadow-2xl p-8 animate-fade-in z-50">
+          <div className="absolute top-full left-0 right-0 liquid-glass p-8 animate-fade-in z-50 border-b border-cyan-500/40">
             <div className="max-w-7xl mx-auto">
               <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
                 <span className="text-xs font-black uppercase tracking-widest text-cyan-400 flex items-center gap-2">
-                  <Smartphone className="w-4 h-4" /> Danh Mục iPhone VN/A Chính Hãng Apple ({iphoneProducts.length} Mẫu)
+                  <Smartphone className="w-4 h-4" /> iPhone VN/A Chính Hãng Thế Giới Di Động ({iphoneProducts.length} Mẫu)
                 </span>
                 <a href="#configurator" className="text-xs text-slate-400 hover:text-white underline">
-                  Xem tất cả phiên bản & so sánh giá →
+                  Bảng giá iPhone mới nhất →
                 </a>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {iphoneProducts.map((phone) => (
                   <a
                     key={phone.id}
                     href="#configurator"
                     onClick={() => setActiveDropdown(null)}
-                    className="group bg-slate-900/70 hover:bg-blue-950/80 p-4 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 text-center flex flex-col justify-between hover:-translate-y-1 shadow-lg"
+                    className="liquid-card p-4 rounded-2xl text-center flex flex-col justify-between"
                   >
-                    <div className="h-32 w-full rounded-xl overflow-hidden mb-2 relative flex items-center justify-center p-2 bg-slate-950">
+                    <div className="h-32 w-full rounded-xl overflow-hidden mb-2 relative flex items-center justify-center p-2 bg-slate-950/80">
                       <img src={phone.imageUrl} alt={phone.name} className="h-full object-contain group-hover:scale-110 transition-transform duration-500" />
-                      {phone.isHot && (
+                      {phone.discountTag && (
                         <span className="absolute top-2 right-2 px-2 py-0.5 bg-red-600 text-white font-black text-[9px] rounded-full uppercase shadow-md">
-                          HOT
+                          {phone.discountTag}
                         </span>
                       )}
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-white text-sm group-hover:text-cyan-400 transition-colors">{phone.name}</h4>
+                      <h4 className="font-extrabold text-white text-sm hover:text-cyan-400 transition-colors">{phone.name}</h4>
                       <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">{phone.chipset}</p>
                       <p className="text-xs font-black text-amber-400 mt-2">
-                        Từ {phone.storages[0].price.toLocaleString('vi-VN')} Triệu VNĐ
+                        {phone.storages[0].price.toLocaleString('vi-VN')} đ
                       </p>
                     </div>
                   </a>
@@ -227,14 +227,14 @@ export function Header() {
 
         {/* Mega Dropdown Samsung */}
         {activeDropdown === 'samsung' && (
-          <div className="absolute top-full left-0 right-0 bg-[#071026]/98 backdrop-blur-3xl border-b border-amber-500/40 shadow-2xl p-8 animate-fade-in z-50">
+          <div className="absolute top-full left-0 right-0 liquid-glass p-8 animate-fade-in z-50 border-b border-amber-500/40">
             <div className="max-w-7xl mx-auto">
               <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
                 <span className="text-xs font-black uppercase tracking-widest text-amber-400 flex items-center gap-2">
-                  <Smartphone className="w-4 h-4" /> Samsung Galaxy AI Flagship Series ({samsungProducts.length} Mẫu)
+                  <Smartphone className="w-4 h-4" /> Samsung Galaxy AI Series ({samsungProducts.length} Mẫu)
                 </span>
                 <a href="#configurator" className="text-xs text-slate-400 hover:text-white underline">
-                  Xem bảng giá chi tiết →
+                  Xem chi tiết ưu đãi TGDD →
                 </a>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -243,9 +243,9 @@ export function Header() {
                     key={phone.id}
                     href="#configurator"
                     onClick={() => setActiveDropdown(null)}
-                    className="group bg-slate-900/70 hover:bg-amber-950/40 p-4 rounded-2xl border border-white/10 hover:border-amber-400/50 transition-all duration-300 text-center flex flex-col justify-between hover:-translate-y-1 shadow-lg"
+                    className="liquid-card p-4 rounded-2xl text-center flex flex-col justify-between"
                   >
-                    <div className="h-32 w-full rounded-xl overflow-hidden mb-2 relative flex items-center justify-center p-2 bg-slate-950">
+                    <div className="h-32 w-full rounded-xl overflow-hidden mb-2 relative flex items-center justify-center p-2 bg-slate-950/80">
                       <img src={phone.imageUrl} alt={phone.name} className="h-full object-contain group-hover:scale-110 transition-transform duration-500" />
                       {phone.isHot && (
                         <span className="absolute top-2 right-2 px-2 py-0.5 bg-amber-500 text-slate-950 font-black text-[9px] rounded-full uppercase shadow-md">
@@ -254,10 +254,10 @@ export function Header() {
                       )}
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-white text-sm group-hover:text-amber-400 transition-colors">{phone.name}</h4>
+                      <h4 className="font-extrabold text-white text-sm hover:text-amber-400 transition-colors">{phone.name}</h4>
                       <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">{phone.screen}</p>
                       <p className="text-xs font-black text-amber-400 mt-2">
-                        Từ {phone.storages[0].price.toLocaleString('vi-VN')} Triệu VNĐ
+                        {phone.storages[0].price.toLocaleString('vi-VN')} đ
                       </p>
                     </div>
                   </a>
@@ -267,34 +267,31 @@ export function Header() {
           </div>
         )}
 
-        {/* Mega Dropdown Gaming & Android */}
-        {activeDropdown === 'gaming' && (
-          <div className="absolute top-full left-0 right-0 bg-[#071026]/98 backdrop-blur-3xl border-b border-purple-500/40 shadow-2xl p-8 animate-fade-in z-50">
+        {/* Mega Dropdown Tablet */}
+        {activeDropdown === 'tablet' && (
+          <div className="absolute top-full left-0 right-0 liquid-glass p-8 animate-fade-in z-50 border-b border-purple-500/40">
             <div className="max-w-7xl mx-auto">
               <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
                 <span className="text-xs font-black uppercase tracking-widest text-purple-400 flex items-center gap-2">
-                  <Gamepad2 className="w-4 h-4" /> Gaming Phone & Android Flagship Cao Cấp
+                  <Smartphone className="w-4 h-4" /> Tablet & Android Flagship
                 </span>
-                <a href="#configurator" className="text-xs text-slate-400 hover:text-white underline">
-                  Khám phá cấu hình khủng →
-                </a>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {gamingProducts.map((phone) => (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {tabletProducts.map((phone) => (
                   <a
                     key={phone.id}
                     href="#configurator"
                     onClick={() => setActiveDropdown(null)}
-                    className="group bg-slate-900/70 hover:bg-purple-950/40 p-4 rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 text-center flex flex-col justify-between hover:-translate-y-1 shadow-lg"
+                    className="liquid-card p-4 rounded-2xl text-center flex flex-col justify-between"
                   >
-                    <div className="h-32 w-full rounded-xl overflow-hidden mb-2 relative flex items-center justify-center p-2 bg-slate-950">
+                    <div className="h-32 w-full rounded-xl overflow-hidden mb-2 relative flex items-center justify-center p-2 bg-slate-950/80">
                       <img src={phone.imageUrl} alt={phone.name} className="h-full object-contain group-hover:scale-110 transition-transform duration-500" />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-white text-sm group-hover:text-purple-400 transition-colors">{phone.name}</h4>
+                      <h4 className="font-extrabold text-white text-sm hover:text-purple-400 transition-colors">{phone.name}</h4>
                       <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">{phone.chipset}</p>
                       <p className="text-xs font-black text-amber-400 mt-2">
-                        Từ {phone.storages[0].price.toLocaleString('vi-VN')} Triệu VNĐ
+                        {phone.storages[0].price.toLocaleString('vi-VN')} đ
                       </p>
                     </div>
                   </a>
@@ -306,17 +303,17 @@ export function Header() {
 
         {/* Search Modal Overlay */}
         {searchOpen && (
-          <div className="absolute top-full left-0 right-0 bg-[#050b18]/95 backdrop-blur-3xl border-b border-cyan-500/40 p-6 shadow-2xl z-50 animate-fade-in">
+          <div className="absolute top-full left-0 right-0 liquid-glass p-6 shadow-2xl z-50 animate-fade-in border-b border-cyan-500/40">
             <div className="max-w-3xl mx-auto space-y-4">
               <div className="relative">
                 <Search className="w-5 h-5 text-cyan-400 absolute left-4 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   autoFocus
-                  placeholder="Nhập tên mẫu điện thoại (VD: iPhone 16 Pro Max, S25 Ultra, Z Fold6, ROG Phone...)"
+                  placeholder="Nhập tên điện thoại (VD: iPhone 16 Pro Max, S25 Ultra, Z Fold6, iPad M4...)"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-slate-900 border border-cyan-500/50 rounded-2xl py-3.5 pl-12 pr-10 text-white text-sm font-bold focus:outline-none focus:ring-2 focus:ring-cyan-400 shadow-xl"
+                  className="w-full bg-slate-950 border border-cyan-500/50 rounded-2xl py-3.5 pl-12 pr-10 text-white text-sm font-bold focus:outline-none focus:ring-2 focus:ring-cyan-400 shadow-xl"
                 />
                 <button 
                   onClick={() => setSearchOpen(false)}
@@ -333,13 +330,13 @@ export function Header() {
                       key={product.id}
                       href="#configurator"
                       onClick={() => setSearchOpen(false)}
-                      className="flex items-center gap-4 p-3 bg-slate-900/90 hover:bg-blue-900/50 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300"
+                      className="flex items-center gap-4 p-3 liquid-card rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300"
                     >
                       <img src={product.imageUrl} alt={product.name} className="w-12 h-12 object-contain bg-slate-950 p-1 rounded-xl" />
                       <div>
                         <h5 className="font-extrabold text-white text-xs hover:text-cyan-400">{product.name}</h5>
                         <p className="text-[10px] text-slate-400">{product.chipset}</p>
-                        <p className="text-xs font-black text-amber-400 mt-0.5">Từ {product.storages[0].price} Triệu VNĐ</p>
+                        <p className="text-xs font-black text-amber-400 mt-0.5">{product.storages[0].price.toLocaleString('vi-VN')} đ</p>
                       </div>
                     </a>
                   ))}
@@ -350,35 +347,6 @@ export function Header() {
         )}
 
       </div>
-
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#071026] border-b border-cyan-500/30 p-6 space-y-4 text-sm font-bold text-slate-200 animate-fade-in">
-          <div className="space-y-2">
-            <div className="text-xs font-black text-cyan-400 uppercase tracking-widest">Danh Mục Điện Thoại</div>
-            <a href="#configurator" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-white border-b border-white/5">
-               Apple iPhone VN/A Chính Hãng
-            </a>
-            <a href="#configurator" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-white border-b border-white/5">
-              🌌 Samsung Galaxy AI Series
-            </a>
-            <a href="#configurator" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-white border-b border-white/5">
-              🎮 Gaming Phone (ROG Phone, Xiaomi...)
-            </a>
-          </div>
-          <div className="space-y-2 pt-2">
-            <a href="#trade-in" onClick={() => setMobileMenuOpen(false)} className="block py-2 hover:text-cyan-400">
-              🔄 Thu Cũ Đổi Mới Trợ Giá 6 Trđ
-            </a>
-            <a href="#installment" onClick={() => setMobileMenuOpen(false)} className="block py-2 hover:text-cyan-400">
-              💳 Mua Trả Góp 0% Lãi Suất
-            </a>
-            <a href="#store-order" onClick={() => setMobileMenuOpen(false)} className="block py-2 hover:text-cyan-400">
-              📍 Hệ Thống 45 Cửa Hàng PHONEHUB
-            </a>
-          </div>
-        </div>
-      )}
     </header>
   );
 }
