@@ -38,8 +38,8 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     powerHp: 3.3,
     acceleration: '70 km/h',
     drivetrain: 'Động cơ Inhub LFP',
-    description: 'Thiết kế thời trang, thon gọn, trang bị bộ Pin LFP thế hệ mới cho quãng đường di chuyển kỷ lục lên tới 203 km.',
-    imageUrl: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=80',
+    description: 'Thiết kế thời trang, thon gọn, trang bị bộ Pin LFP thế hệ mới cho quãng đường di chuyển kỷ kỷ lục lên tới 203 km.',
+    imageUrl: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/xe-may-dien-vinfast-evo200',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-evo200',
     colors: [
@@ -64,7 +64,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '78 km/h',
     drivetrain: 'Động cơ Inhub LFP',
     description: 'Thiết kế thon gọn thể thao. Vận hành êm ái, chống nước tuyệt đối phù hợp mọi địa hình đường phố Việt Nam.',
-    imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/xe-may-dien-vinfast-feliz-s',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-feliz-s',
     colors: [
@@ -87,7 +87,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '78 km/h',
     drivetrain: 'Động cơ Inhub LFP',
     description: 'Kiểu dáng Ý sang trọng thanh lịch. Sử dụng công nghệ pin LFP siêu bền cho quãng đường gần 200 km.',
-    imageUrl: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/xe-may-dien-vinfast-klara-s-2022',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-klara-s-2022',
     colors: [
@@ -111,7 +111,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '89 km/h',
     drivetrain: 'Side Motor truyền động dây curoa',
     description: 'Động cơ đặt bên Side Motor kết hợp phanh ABS bánh trước. Tăng tốc thể thao lên tới 89 km/h.',
-    imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/xe-may-dien-vinfast-vento-s',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-vento-s',
     colors: [
@@ -134,7 +134,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '99 km/h',
     drivetrain: 'Center Motor truyền động xích',
     description: 'Dòng xe máy điện mạnh mẽ nhất của VinFast. Động cơ giữa Center Motor 7100W, trang bị phanh ABS 2 kênh trước sau.',
-    imageUrl: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/xe-may-dien-vinfast-theon-s',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-theon-s',
     colors: [
@@ -156,7 +156,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '50 km/h',
     drivetrain: 'Động cơ Bosch Thụy Sỹ',
     description: 'Thiết kế nhỏ gọn, bền bỉ, tiết kiệm điện năng thích hợp cho học sinh và di chuyển quãng ngắn.',
-    imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/xe-may-dien-vinfast-impes',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-impes',
     colors: [
@@ -180,7 +180,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '5.3s (0-50km/h)',
     drivetrain: 'RWD (Cầu sau)',
     description: 'Thiết kế góc cạnh vuông vắn độc đáo, tối ưu cho việc di chuyển linh hoạt trong đô thị Việt Nam. Chi phí vận hành siêu tiết kiệm.',
-    imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/s/vf3',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/xe-vinfast-vf-3',
     colors: [
@@ -205,7 +205,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '9.5s (0-100km/h)',
     drivetrain: 'FWD (Cầu trước)',
     description: 'Phong cách thiết kế hiện đại, phối màu 2 tông thời trang. Trang bị công nghệ an toàn hàng đầu phân khúc A-SUV.',
-    imageUrl: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/s/vf5-plus',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-vf5-plus',
     colors: [
@@ -229,7 +229,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '8.9s (0-100km/h)',
     drivetrain: 'FWD (Cầu trước)',
     description: 'Thiết kế tinh tế từ Torino Design. Nội thất rộng rãi vượt trội phân khúc B, hỗ trợ trợ lý AI ViVi thông minh.',
-    imageUrl: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/s/vf6',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-vf6',
     colors: [
@@ -252,7 +252,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '5.8s (0-100km/h)',
     drivetrain: 'AWD (2 Cầu)',
     description: 'Hợp tác thiết kế cùng Torino Design. Đường nét vuốt dốc phi thuyền cá tính, tăng tốc thể thao đầy phấn khích.',
-    imageUrl: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/s/vf7',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-vf7',
     colors: [
@@ -276,7 +276,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '5.5s (0-100km/h)',
     drivetrain: 'AWD (2 Cầu)',
     description: 'Mẫu xe toàn cầu xuất khẩu Mỹ & Châu Âu. Thiết kế sang trọng Pininfarina, công suất 402 HP dẫn động 2 cầu AWD.',
-    imageUrl: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/s/vf8',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-vf8',
     colors: [
@@ -299,7 +299,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
     acceleration: '6.5s (0-100km/h)',
     drivetrain: 'AWD (2 Cầu)',
     description: 'Bản xe Chủ Tịch sang trọng vượt trội. Ghế cơ trưởng massage/sưởi/thông gió, màn hình 15.6 inch 4K và trợ lý AI ViVi.',
-    imageUrl: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1200&q=80',
     officialUrl: 'https://shop.vinfastauto.com/vn_vi/s/vf9',
     specsUrl: 'https://shop.vinfastauto.com/vn_vi/thong-so-ky-thuat-vf9',
     colors: [
