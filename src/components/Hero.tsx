@@ -41,7 +41,7 @@ export function Hero() {
           <div className="lg:col-span-5 space-y-6 text-left animate-fade-in">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full liquid-glass text-xs font-black text-cyan-300 uppercase tracking-widest shadow-xl">
               <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-              ĐỒ ÁN E-COMMERCE 2026
+              ĐỒ ÁN NỘP BÁO CÁO E-COMMERCE 2026
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight uppercase leading-[1.1]">
@@ -52,7 +52,7 @@ export function Hero() {
             </h1>
 
             <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed max-w-xl">
-              Khám phá iPhone 16 Pro Max Titan Sa Mạc & Samsung Galaxy S25 Ultra 5G. Thu cũ trợ giá tới 5 triệu, trả góp 0% và giao hàng demo siêu tốc.
+              Khám phá iPhone 16 Pro Max Titan Sa Mạc & Samsung Galaxy S25 Ultra 5G chính hãng VN/A. Đổi cũ trợ giá tới 5 triệu, trả góp 0% và giao hàng demo siêu tốc.
             </p>
 
             {/* CTAs */}
@@ -91,7 +91,7 @@ export function Hero() {
                 {/* Left Bottom Label */}
                 <div className="absolute bottom-5 left-6 liquid-glass px-5 py-3 rounded-2xl text-left shadow-2xl">
                   <span className="text-[10px] text-cyan-400 font-black uppercase tracking-widest block flex items-center gap-1">
-                    <Flame className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-bounce" /> SIÊU PHẨM BÁN CHẠY
+                    <Flame className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-bounce" /> SIÊU PHẨM HOT NHẤT
                   </span>
                   <h3 className="text-xl font-black text-white">iPhone 16 Pro Max 256GB</h3>
                   <div className="flex items-center gap-2 mt-0.5">
@@ -109,6 +109,16 @@ export function Hero() {
                     <div className="text-left pr-2">
                       <span className="text-[10px] text-slate-300 font-bold block uppercase tracking-wider">CHÍNH HÃNG</span>
                       <span className="text-xs font-black text-white block">BH 1 đổi 1 12 tháng</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 liquid-glass p-3 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-400 to-yellow-500 text-slate-950 font-black text-base flex items-center justify-center shadow-inner">
+                      ⚡
+                    </div>
+                    <div className="text-left pr-2">
+                      <span className="text-[10px] text-amber-300 font-bold block uppercase tracking-wider">EXPRESS DEMO</span>
+                      <span className="text-xs font-black text-white block">Giao nhanh 1 giờ</span>
                     </div>
                   </div>
                 </div>

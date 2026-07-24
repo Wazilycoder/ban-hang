@@ -5,19 +5,15 @@ import { PHONE_PRODUCTS } from '@/data/phones';
 import { 
   Smartphone, 
   Search, 
-  User, 
   ShoppingBag, 
   ChevronDown, 
   ShieldCheck, 
   Zap, 
-  MapPin, 
-  Sparkles,
+  Flame,
   Menu,
   X,
   RefreshCw,
-  Percent,
-  Flame,
-  Tag
+  Percent
 } from 'lucide-react';
 
 export function Header() {
@@ -43,25 +39,28 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 font-sans">
-      {/* Top Banner Announcement Ticker */}
+      {/* Top Clean Announcement Ticker (No Phone Numbers or Addresses) */}
       <div className="bg-[#030712] border-b border-cyan-500/20 text-slate-300 text-[11px] py-1.5 px-4 hidden lg:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1 text-amber-300 font-bold">
+            <span className="flex items-center gap-1.5 text-amber-300 font-bold">
               <Flame className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              ĐỒ ÁN E-COMMERCE: Thu cũ trợ giá 5 triệu
+              ƯU ĐÃI FLAGSHIP: Thu cũ đổi mới trợ giá tới 5.000.000đ
             </span>
-            <span className="flex items-center gap-1 text-cyan-300 font-medium">
+            <span className="flex items-center gap-1.5 text-cyan-300 font-medium">
               <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
-              Bảo hành chính hãng VN/A 1 đổi 1
+              Bảo hành chính hãng VN/A 1 đổi 1 12 tháng
+            </span>
+            <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
+              <Zap className="w-3.5 h-3.5 text-emerald-400" />
+              Giao hỏa tốc miễn phí trong 1 giờ
             </span>
           </div>
 
           <div className="flex items-center gap-4 text-slate-400 text-[11px]">
-            <a href="#store-order" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
-              <MapPin className="w-3 h-3 text-amber-400" />
-              Hệ thống Showroom Flagship
-            </a>
+            <span className="text-cyan-400 font-extrabold uppercase tracking-wider">
+              DỰ ÁN BÁO CÁO E-COMMERCE 2026
+            </span>
           </div>
         </div>
       </div>
@@ -95,12 +94,12 @@ export function Header() {
                 PHONE<span className="liquid-text-gradient">HUB</span>
               </span>
               <span className="text-[9px] text-cyan-400 font-extrabold uppercase tracking-widest block -mt-1">
-                E-COMMERCE DEMO
+                FLAGSHIP STORE VN/A
               </span>
             </div>
           </a>
 
-          {/* Left Menu Items (Strictly Single Line Flex) */}
+          {/* Left Menu Items (Single Line Flex) */}
           <nav className="hidden lg:flex items-center gap-5 text-xs font-black uppercase tracking-wider text-slate-200 whitespace-nowrap">
             
             {/* iPhone Dropdown */}

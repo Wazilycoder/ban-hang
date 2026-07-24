@@ -63,8 +63,7 @@ export function TestDriveForm() {
                 <Smartphone className="w-4 h-4" /> Đã gửi SMS & Email xác nhận đơn hàng
               </div>
               <p className="text-slate-400 text-[11px]">
-                • Hình thức: <strong>{fulfillmentType === 'pickup' ? `Nhận tại ${activeBranch.name}` : 'Giao hỏa tốc 1h'}</strong><br />
-                • Hotline hỗ trợ 24/7: <strong>1800 6868</strong>
+                • Hình thức: <strong>{fulfillmentType === 'pickup' ? `Nhận tại ${activeBranch.name}` : 'Giao hỏa tốc 1h'}</strong>
               </p>
             </div>
 
