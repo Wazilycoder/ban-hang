@@ -5,13 +5,11 @@ import { VINFAST_PRODUCTS, VinFastProduct } from '@/data/cars';
 
 export function Configurator() {
   const [selectedCategory, setSelectedCategory] = useState<'Ô tô điện' | 'Xe máy điện'>('Ô tô điện');
-  const [displayMode, setDisplayMode] = useState<'photo' | 'vector'>('photo');
-  const [imgError, setImgError] = useState<boolean>(false);
   
   // Filter products by active category
   const filteredProducts = VINFAST_PRODUCTS.filter(p => p.category === selectedCategory);
   
-  const [selectedProduct, setSelectedProduct] = useState<VinFastProduct>(filteredProducts[filteredProducts.length - 1]);
+  const [selectedProduct, setSelectedProduct] = useState<VinFastProduct>(filteredProducts[0]);
   const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
   const [buyBattery, setBuyBattery] = useState<boolean>(false);
   const [selectedVersion, setSelectedVersion] = useState<'Eco' | 'Plus'>('Plus');
@@ -22,7 +20,6 @@ export function Configurator() {
     const newProducts = VINFAST_PRODUCTS.filter(p => p.category === cat);
     setSelectedProduct(newProducts[0]);
     setSelectedColorIndex(0);
-    setImgError(false);
   };
 
   const activeProduct = filteredProducts.find(p => p.id === selectedProduct.id) || filteredProducts[0];
@@ -52,7 +49,7 @@ export function Configurator() {
             Tùy Chỉnh & Xem Thông Số Sản Phẩm
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal">
-            Trải nghiệm trọn bộ 12 sản phẩm **Ô tô điện** & **Xe máy điện** VinFast tích hợp link ảnh chính hãng `shop.vinfastauto.com`.
+            Trải nghiệm trọn bộ 12 sản phẩm **Ô tô điện** & **Xe máy điện** VinFast Việt Nam với ảnh chụp HD đẹp mắt.
           </p>
         </div>
 
@@ -100,7 +97,6 @@ export function Configurator() {
                 onClick={() => {
                   setSelectedProduct(product);
                   setSelectedColorIndex(0);
-                  setImgError(false);
                 }}
                 className={`flex-1 py-3 px-3 rounded-full text-xs sm:text-sm font-black transition-all duration-300 transform active:scale-95 text-center whitespace-nowrap z-10 ${
                   isSelected
@@ -117,26 +113,10 @@ export function Configurator() {
         {/* Main Workspace */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left 7 Cols: Image/Vector Showcase with Toggle */}
+          {/* Left 7 Cols: Image Showcase */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="relative liquid-glass rounded-3xl p-6 overflow-hidden min-h-[420px] flex flex-col items-center justify-center">
+            <div className="relative liquid-glass rounded-3xl p-4 overflow-hidden min-h-[420px] flex flex-col items-center justify-center border border-white/10">
               
-              {/* Mode Toggle Switcher */}
-              <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 p-1 rounded-full bg-slate-900/80 border border-white/10 text-[11px] font-bold">
-                <button
-                  onClick={() => setDisplayMode('photo')}
-                  className={`px-3 py-1 rounded-full transition-all ${displayMode === 'photo' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-white'}`}
-                >
-                  🖼️ Ảnh HD
-                </button>
-                <button
-                  onClick={() => setDisplayMode('vector')}
-                  className={`px-3 py-1 rounded-full transition-all ${displayMode === 'vector' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-white'}`}
-                >
-                  🎨 3D Vector
-                </button>
-              </div>
-
               {/* Dynamic Glow */}
               <div
                 className="absolute inset-0 opacity-30 blur-3xl transition-all duration-700 pointer-events-none"
@@ -145,46 +125,14 @@ export function Configurator() {
                 }}
               />
 
-              {displayMode === 'photo' && !imgError ? (
-                /* Official HD Image Render with Fallback */
-                <div className="w-full h-[320px] sm:h-[380px] relative z-10 flex items-center justify-center p-2">
-                  <img
-                    src={activeProduct.imageUrl}
-                    alt={activeProduct.name}
-                    onError={() => setImgError(true)}
-                    className="max-w-full max-h-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)] transition-all duration-700 transform hover:scale-105"
-                  />
-                </div>
-              ) : (
-                /* Vector Silhouette Render Fallback */
-                <div className="w-full h-[280px] sm:h-[340px] relative z-10 flex items-center justify-center">
-                  <svg className="w-full h-full p-4 drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)] transition-all duration-700 ease-out transform hover:scale-105" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {activeProduct.category === 'Ô tô điện' ? (
-                      <>
-                        <path d="M 160 210 Q 400 250 640 210" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" />
-                        <path d="M 360 230 L 400 260 L 440 230" stroke="#E51937" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d={activeProduct.svgPath} fill={activeColor.hex} opacity="0.95" className="transition-all duration-700 ease-out" />
-                        <path d="M 280 180 Q 400 130 520 150" stroke="#38BDF8" strokeWidth="4" strokeLinecap="round" opacity="0.85" />
-                        <circle cx="240" cy="275" r="44" fill="#0F172A" stroke="#E51937" strokeWidth="6" />
-                        <circle cx="240" cy="275" r="22" fill="#334155" />
-                        <circle cx="560" cy="275" r="44" fill="#0F172A" stroke="#E51937" strokeWidth="6" />
-                        <circle cx="560" cy="275" r="22" fill="#334155" />
-                        <ellipse cx="400" cy="320" rx="350" ry="14" fill={activeColor.hex} opacity="0.6" />
-                      </>
-                    ) : (
-                      <>
-                        <path d="M 320 140 L 360 220 L 440 230 C 480 230, 520 250, 540 280" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" />
-                        <path d={activeProduct.svgPath} fill={activeColor.hex} opacity="0.95" className="transition-all duration-700 ease-out" />
-                        <circle cx="300" cy="280" r="36" fill="#0F172A" stroke="#00F0FF" strokeWidth="5" />
-                        <circle cx="300" cy="280" r="18" fill="#334155" />
-                        <circle cx="540" cy="280" r="36" fill="#0F172A" stroke="#00F0FF" strokeWidth="5" />
-                        <circle cx="540" cy="280" r="18" fill="#334155" />
-                        <ellipse cx="420" cy="320" rx="260" ry="12" fill={activeColor.hex} opacity="0.6" />
-                      </>
-                    )}
-                  </svg>
-                </div>
-              )}
+              {/* High Quality Photo Rendering */}
+              <div className="w-full h-[320px] sm:h-[380px] relative z-10 flex items-center justify-center p-2">
+                <img
+                  src={activeProduct.imageUrl}
+                  alt={activeProduct.name}
+                  className="w-full h-full object-cover rounded-2xl filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)] transition-all duration-700 transform hover:scale-105"
+                />
+              </div>
 
               <div className="absolute top-4 left-4 px-4 py-2 liquid-pill rounded-full text-xs font-bold text-slate-200">
                 Phân khúc: <strong className="text-cyan-400">{activeProduct.segment}</strong>

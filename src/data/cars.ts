@@ -7,7 +7,7 @@ export interface VinFastProduct {
   id: string;
   name: string;
   tagline: string;
-  category: 'Ô ô điện' | 'Xe máy điện';
+  category: 'Ô tô điện' | 'Xe máy điện';
   segment: string;
   priceBase: number; // Đơn vị: triệu VNĐ
   batteryDeposit: number;
@@ -21,12 +21,11 @@ export interface VinFastProduct {
   specsUrl: string;
   colors: CarColor[];
   features: string[];
-  svgPath: string;
   isHot?: boolean;
 }
 
 export const VINFAST_PRODUCTS: VinFastProduct[] = [
-  // --- XE MÁY ĐIỆN VINFAST ---
+  // --- PHẦN 1: XE MÁY ĐIỆN VINFAST ---
   {
     id: 'evo200',
     name: 'VinFast Evo200',
@@ -50,7 +49,6 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Đen Đêm', hex: '#0F172A' }
     ],
     features: ['Quãng đường 203 km/sạc', 'Chuẩn chống nước IP67', 'Đèn LED toàn phần', 'Cốp xe rộng 22 lít'],
-    svgPath: 'M 280 260 C 300 230, 360 170, 420 170 C 480 170, 520 220, 540 260 Z',
     isHot: true
   },
   {
@@ -74,8 +72,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Xanh Mint', hex: '#10B981' },
       { name: 'Đen Bóng', hex: '#090D16' }
     ],
-    features: ['Vận tốc tối đa 78 km/h', 'Pin LFP độ bền cao', 'Giảm xóc thuỷ lực siêu êm', 'Kết nối thông minh eSIM'],
-    svgPath: 'M 260 260 C 290 220, 350 160, 430 160 C 500 160, 540 210, 560 260 Z'
+    features: ['Vận tốc tối đa 78 km/h', 'Pin LFP độ bền cao', 'Giảm xóc thuỷ lực siêu êm', 'Kết nối thông minh eSIM']
   },
   {
     id: 'klara-s-2022',
@@ -99,7 +96,6 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Đen Nhám', hex: '#1E293B' }
     ],
     features: ['Quãng đường 194 km/sạc', 'Chuẩn chống nước IP67', 'Ứng dụng định vị GPS', 'Cốp xe rộng 23 lít'],
-    svgPath: 'M 270 260 C 300 220, 360 165, 425 165 C 490 165, 530 210, 550 260 Z',
     isHot: true
   },
   {
@@ -123,8 +119,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Đỏ Đô', hex: '#991B1B' },
       { name: 'Xanh Đen', hex: '#0F172A' }
     ],
-    features: ['Phanh an toàn ABS', 'Động cơ Side Motor 5200W', 'Khoá thông minh Smartkey', 'Vận tốc 89 km/h'],
-    svgPath: 'M 250 260 C 280 210, 350 155, 440 155 C 510 155, 550 200, 570 260 Z'
+    features: ['Phanh an toàn ABS', 'Động cơ Side Motor 5200W', 'Khoá thông minh Smartkey', 'Vận tốc 89 km/h']
   },
   {
     id: 'theon-s',
@@ -146,8 +141,7 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Đen Nhám Executive', hex: '#020617' },
       { name: 'Đỏ Thể Thao', hex: '#B91C1C' }
     ],
-    features: ['Phanh ABS 2 kênh', 'Tốc độ tối đa 99 km/h', 'Động cơ giữa Center Motor 7.1kW', 'Công nghệ PAAK khoá số điện thoại'],
-    svgPath: 'M 240 260 C 270 200, 350 150, 450 150 C 520 150, 560 195, 580 260 Z'
+    features: ['Phanh ABS 2 kênh', 'Tốc độ tối đa 99 km/h', 'Động cơ giữa Center Motor 7.1kW', 'Công nghệ PAAK khoá số điện thoại']
   },
   {
     id: 'impes-ludo',
@@ -169,16 +163,15 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Đỏ Thể Thao', hex: '#DC2626' },
       { name: 'Xanh Thanh Lịch', hex: '#0284C7' }
     ],
-    features: ['Động cơ Bosch Thụy Sĩ', 'Khung gầm Châu Âu', 'Kết nối ứng dụng điện thoại', 'Chi phí tiết kiệm'],
-    svgPath: 'M 280 260 C 300 230, 360 170, 420 170 Z'
+    features: ['Động cơ Bosch Thụy Sĩ', 'Khung gầm Châu Âu', 'Kết nối ứng dụng điện thoại', 'Chi phí tiết kiệm']
   },
 
-  // --- Ô TÔ ĐIỆN VINFAST ---
+  // --- PHẦN 2: Ô TÔ ĐIỆN VINFAST ---
   {
     id: 'vf-3',
     name: 'VinFast VF 3',
     tagline: 'SUV đô thị điện phá cách cá tính',
-    category: 'Ô ô điện',
+    category: 'Ô tô điện',
     segment: 'SUV A',
     priceBase: 240,
     batteryDeposit: 0,
@@ -197,14 +190,13 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Trắng Ngọc Trai', hex: '#F8FAFC' }
     ],
     features: ['Màn hình 10 inch cảm ứng', 'La-zăng 16 inch', 'Trợ lý ảo ViVi tiếng Việt', 'Sạc siêu nhanh 10-70% trong 36 phút'],
-    svgPath: 'M 160 260 L 160 210 C 160 180, 200 160, 260 160 L 520 160 C 580 160, 620 180, 640 210 L 640 260 Z',
     isHot: true
   },
   {
     id: 'vf-5-plus',
     name: 'VinFast VF 5 Plus',
     tagline: 'A-SUV điện quốc dân cho gia đình Việt',
-    category: 'Ô ô điện',
+    category: 'Ô tô điện',
     segment: 'SUV A',
     priceBase: 468,
     batteryDeposit: 80,
@@ -222,14 +214,13 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Trắng Luxury', hex: '#FFFFFF' }
     ],
     features: ['Cảnh báo điểm mù BSM', 'Giám sát áp suất lốp iTPMS', 'Cảnh báo giao thông cắt ngang', 'Hệ thống 6 túi khí'],
-    svgPath: 'M 140 270 C 160 270, 200 240, 260 200 C 320 160, 420 150, 540 150 C 620 150, 660 190, 680 230 L 680 270 Z',
     isHot: true
   },
   {
     id: 'vf-6',
     name: 'VinFast VF 6',
     tagline: 'B-SUV điện tinh tế cho hành trình gia đình hiện đại',
-    category: 'Ô ô điện',
+    category: 'Ô tô điện',
     segment: 'SUV B',
     priceBase: 675,
     batteryDeposit: 90,
@@ -246,14 +237,13 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Đen Jet Black', hex: '#0F172A' },
       { name: 'Trắng Ngọc Trai', hex: '#F8FAFC' }
     ],
-    features: ['Màn hình giải trí 12.9 inch', 'Hệ thống trợ lái ADAS Level 2', 'Trợ lý ảo ViVi tiếng Việt', 'La-zăng 19 inch thể thao'],
-    svgPath: 'M 130 275 C 150 275, 190 240, 250 205 C 310 155, 430 140, 550 140 C 630 140, 670 185, 690 225 L 700 275 Z'
+    features: ['Màn hình giải trí 12.9 inch', 'Hệ thống trợ lái ADAS Level 2', 'Trợ lý ảo ViVi tiếng Việt', 'La-zăng 19 inch thể thao']
   },
   {
     id: 'vf-7',
     name: 'VinFast VF 7',
     tagline: 'Triết lý thiết kế Vũ trụ phi thuyền thể thao',
-    category: 'Ô ô điện',
+    category: 'Ô tô điện',
     segment: 'SUV C',
     priceBase: 850,
     batteryDeposit: 150,
@@ -271,14 +261,13 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Xám Neptune', hex: '#475569' }
     ],
     features: ['Màn hình 12.9 inch nghiêng tài xế', 'Cửa sổ trời toàn cảnh tráng bạc', 'Hiển thị kính lái HUD', 'Hệ thống trợ lái ADAS Level 2'],
-    svgPath: 'M 120 280 C 140 280, 180 250, 240 210 C 320 150, 440 120, 560 130 C 640 140, 680 180, 700 220 L 720 280 Z',
     isHot: true
   },
   {
     id: 'vf-8',
     name: 'VinFast VF 8',
     tagline: 'SUV D-Segment điện toàn cầu thông minh vượt trội',
-    category: 'Ô ô điện',
+    category: 'Ô tô điện',
     segment: 'SUV D',
     priceBase: 1090,
     batteryDeposit: 200,
@@ -295,14 +284,13 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Xanh VinFast Blue', hex: '#1D4ED8' },
       { name: 'Đen Executive', hex: '#020617' }
     ],
-    features: ['Màn hình cảm ứng 15.6 inch', 'Tự lái thông minh Highway Assist', 'Ghế da thật sưởi & làm mát', 'Hệ thống 11 túi khí'],
-    svgPath: 'M 110 280 C 130 280, 170 255, 230 215 C 310 155, 430 115, 560 120 C 650 125, 710 165, 740 215 L 750 280 Z'
+    features: ['Màn hình cảm ứng 15.6 inch', 'Tự lái thông minh Highway Assist', 'Ghế da thật sưởi & làm mát', 'Hệ thống 11 túi khí']
   },
   {
     id: 'vf-9',
     name: 'VinFast VF 9',
     tagline: 'SUV 7 chỗ hạng sang đỉnh cao công nghệ Chủ tịch',
-    category: 'Ô ô điện',
+    category: 'Ô tô điện',
     segment: 'SUV E',
     priceBase: 1580,
     batteryDeposit: 250,
@@ -320,7 +308,6 @@ export const VINFAST_PRODUCTS: VinFastProduct[] = [
       { name: 'Trắng Ngọc Trai', hex: '#FFFFFF' }
     ],
     features: ['Ghế thương gia sưởi & massage 8 chế độ', 'Màn hình trung tâm 15.6 inch 4K', 'Trợ lý ảo AI ViVi đa thông minh', 'Tự lái thông minh Highway Assist'],
-    svgPath: 'M 100 280 C 120 280, 160 260, 220 220 C 300 160, 420 110, 560 115 C 660 120, 720 160, 750 210 L 760 280 Z',
     isHot: true
   }
 ];
